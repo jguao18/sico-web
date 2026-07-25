@@ -20,11 +20,12 @@ Este documento es el repositorio definitivo de la estrategia, arquitectura, prec
 
 ---
 
-2. El Perfil del Fundador (Autoridad Criterio Técnico)
-------------------------------------------------------
-- Ingeniero Civil con +6 años de experiencia en campo (Residente, Interventor y Supervisor en pavimentación y edificación).
-- Especialista en Gerencia de Proyectos.
-- Magíster MBA (Titulado): Elimina cualquier duda sobre la capacidad para gerenciar, entender presupuestos y estructurar empresas.
+2. El Perfil del Fundador (Respaldo Técnico & Autoridad Gerencial)
+------------------------------------------------------------------
+- **Formación Profesional:** Ingeniero Civil.
+- **Postgrados:** Especialista en Gerencia de Construcción de Obras & Master of Business Administration (MBA).
+- **Enfoque Operativo:** Amplia experiencia práctica en el campo de la obra combinada con **automatización de procesos**.
+- **Propósito del Perfil:** Generar confianza absoluta y empatía inmediata con el cliente (gerentes y dueños de obra), demostrando que la plataforma no fue creada por teóricos del software, sino por alguien que entiende de primera mano el dolor, los sobrecostos y la dinámica real del terreno.
 
 ---
 
@@ -55,7 +56,7 @@ Catálogo Base y Módulos Disponibles:
 
 Fábrica de Módulos a Medida & Política de Setup Fee:
 - Si el cliente requiere un flujo o módulo personalizado fuera del catálogo estándar, se le cobra un **Pago Único de Configuración e Integración (Setup Fee: $300.000 a $500.000 COP)** durante el primer mes por el trabajo de adaptación.
-- Tras la entrega, el cliente mantiene exactamente su misma tarifa mensual recurrente sin sobrecostos.
+- Tras la entrega, el cliente mantiene exactamente su misma tarifa mensual recurrente sin sobrecostos, ocupando su cupo de módulos activos.
 
 ---
 
@@ -102,20 +103,53 @@ En los informes automáticos semanales y mensuales para la Gerencia y la Junta D
 
 ---
 
-9. Modelo de Negocio y Estructura de Precios (3 Niveles)
--------------------------------------------------------
+9. Modelo de Negocio, Estructura Comercial y Oferta por Niveles (SaaS)
+-----------------------------------------------------------------------
 
-🟢 Plan Básico / Starter ($250.000 COP / mes — ~$60 USD)
-- Target: Micro-obras, remodelaciones y contratistas independientes (Obras de hasta $300M COP).
-- Alcance: 1 Módulo Único a elección. Hasta 2 usuarios autorizados.
+### 🛡️ LA BASE OPERATIVA DE SICO (Incluido en TODOS los planes)
+Cada constructora que contrata SICO cuenta con la siguiente arquitectura base para garantizar transparencia, portabilidad y orden:
+- **Acceso Web 24/7:** El dueño o gerente ingresa al Dashboard Gerencial desde su celular o laptop desde cualquier lugar del mundo.
+- **Organización Automática:** Fotos y comprobantes organizados solos en Google Drive; datos tabulados e inmutables en Google Sheets.
+- **Canal Corporativo Exclusivo:** Correo electrónico único dedicado (`obraX@sico.com`) entre la empresa y SICO para procesamiento y notificaciones privadas.
+- **Acuerdo NDA & Cero Secuestro:** Contrato legal de confidencialidad; los datos pertenecen 100% a la constructora.
+- **Flexibilidad de Módulos:** Posibilidad de intercambiar los módulos activos dentro del cupo contratado.
+- **Personal de Campo Ilimitado:** Todos los obreros, capataces o residentes pueden reportar vía Telegram sin cobrar licencias por usuario adicional.
 
-🟡 Plan Medio / Obra Pyme ($750.000 COP / mes — ~$185 USD)
-- Target: Constructoras Pyme con obras medianas (Obras de $300M a $1.500M COP).
-- Alcance: Hasta 3-4 Módulos a elección. Hasta 4 usuarios autorizados.
+---
 
-🔴 Plan Pro / Gerencial Corporativo ($1.800.000 - $2.500.000 COP / mes — ~$450 - $600 USD)
-- Target: Obras principales de gran envergadura (+$1.500M COP) o gerencias corporativas.
-- Alcance: Catálogo Completo (5 a 6+ Módulos). Hasta 5 usuarios de captura autorizados por bot. Entregables VIP en PDF (5 KPIs) y Bitácora Word.
+### 🟢 1. PLAN BÁSICO: "Control Visual" — $250.000 COP / mes por obra
+- **El Porqué (Propuesta de Valor):** Pensado para obras pequeñas o contratistas independientes que sufren por el descontrol del papel, recibos perdidos en bolsillos y cuadernos manchados de cemento. Brinda orden digital e inmediatez a bajo costo.
+- **Cupo de Módulos:** **2 Módulos a elección** (Ej: Bitácora Diaria + Caja Menor).
+- **¿Cómo se ve el Dashboard? (Modo Espejo):**
+  * Pantalla limpia que refleja digitalmente la operación diaria de campo.
+  * Tabla interactiva de gastos con hipervínculo directo para ver la **foto real de cada factura cargada**.
+  * Gráficos de distribución de gastos por categoría (torta y barras).
+- **¿Cómo se brinda el servicio? (Flujo de Entrega):**
+  * El personal de campo reporta datos y fotos por el Bot de Telegram ➔ Apps Script almacena la data en Sheets y Drive ➔ El Dashboard Web lee esa data en tiempo real ➔ El usuario puede descargar reportes operativos básicos organizados en Excel.
+
+---
+
+### 🟡 2. PLAN MEDIO: "Control Inteligente" — $750.000 COP / mes por obra (El Más Vendido)
+- **El Porqué (Propuesta de Valor):** Para constructoras medianas (Pymes) donde el gerente o dueño no puede estar físicamente en el sitio todo el día y necesita que el sistema actúe como un **auditor activo** que detecte fugas y le "ladre" si está perdiendo dinero.
+- **Cupo de Módulos:** **4 Módulos a elección** (Ej: Bitácora, Caja Menor, Materiales, Equipos).
+- **¿Cómo se ve el Dashboard? (Modo Alertas & Semáforos):**
+  * **Semáforos de Advertencia Inmediata:** Indicadores visuales en rojo cuando hay desviaciones *(Ej: "Alerta: Saldo de Caja Menor al 10%", "Inconsistencia: Consumo de Cemento desfasado", "Alquiler de Volqueta vencido")*.
+  * **Presupuesto Dinámico:** Reloj visual que compara el % de presupuesto consumido vs. el % de avance ejecutado.
+- **¿Cómo se brinda el servicio? (Flujo de Entrega):**
+  * Apps Script ejecuta reglas de validación en tiempo real entre los 4 módulos ➔ Si detecta una anomalía, inyecta la Alerta Roja en el Dashboard Web y dispara una notificación al correo exclusivo ➔ Entrega de informes semanales y mensuales estandarizados SICO en PDF/Excel.
+
+---
+
+### 🔴 3. PLAN PRO: "Gerencia Corporativa" — Desde $1.800.000 COP / mes por obra (Cotización a medida)
+- **El Porqué (Propuesta de Valor):** Para obras de gran envergadura o juntas directivas. La gerencia no tiene tiempo de armar informes a mano los fines de semana. Necesitan proyecciones financieras a futuro y documentos oficiales listos para presentar en comités.
+- **Cupo de Módulos:** **Hasta 6 Módulos (Suite Completa)** (Caja, Materiales, Equipos, Bitácora, Subcontratos/Destajos, Nómina/SST).
+- **¿Cómo se ve el Dashboard? (Modo Predictivo & Multi-Obra):**
+  * **Inteligencia Predictiva (EAC - Estimate at Completion):** Medidor que calcula y predice cuánto costará la obra al finalizar si se mantiene el ritmo de gasto actual.
+  * **Liquidación Inteligente de Subcontratos:** Botón de un solo clic que cruza los avances reportados en Bitácora contra las actas de cobro de subcontratistas al destajo.
+  * **Consolidado Multi-Obra:** Tablero ejecutivo para revisar el estado de 2 o más proyectos simultáneamente.
+- **¿Cómo se brinda el servicio? (El Gran Diferenciador — Automatización de Plantillas Propias):**
+  * La constructora entrega a SICO sus plantillas oficiales en Word, Excel o PDF.
+  * El motor de SICO extrae automáticamente los datos y fotos recolectados por los 6 módulos ➔ **Rellena e inyecta la información dentro de los formatos propios del cliente** ➔ Genera y envía por correo los PDFs oficiales con el logo y branding de la constructora, listos para firmar y presentar a la Junta Directiva o Interventoría.
 
 ---
 
