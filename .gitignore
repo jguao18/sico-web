@@ -1,5 +1,57 @@
-sico_estado_actual/
-scratch/
+# ==========================================================
+# .gitignore — Repositorio PÚBLICO sico-web (GitHub Pages)
+#
+# ⚠️ ESTE REPOSITORIO ES PÚBLICO. Sirve la landing en
+#    https://jguao18.github.io/sico-web/
+#
+# Regla única: aquí SOLO entra lo que puede leer cualquier persona
+# en internet. Es decir: la landing y sus imágenes. Nada más.
+#
+# El código fuente de SICO (Apps Script y dashboard) va en un
+# repositorio PRIVADO aparte. Ver PUBLICAR.md.
+# ==========================================================
+
+# --- CÓDIGO FUENTE: nunca en el repositorio público ---
+# El Manual Maestro define el código como propiedad exclusiva de SICO.
+# Publicarlo aquí lo entregaría gratis y expondría la lógica de
+# autorización, los nombres de las pestañas y la estructura de datos.
+02_Codigo_Apps_Script/
+dashboard/
 backup/
+
+# --- Datos reales de clientes ---
+04_Bases_de_Datos_Excel/
+*.xlsx
+*.xls
+*.docx
+
+# --- Estrategia comercial interna (precios, márgenes, guiones) ---
+sico_estado_actual/
+AUDITORIA DETALLADA SICO/
+Alcance base estrtucutral sico.md
+Diseño visual/
+03_Presentacion_y_Comercial/
+
+# --- Material de trabajo desechable ---
+scratch/
+_archivo/
+*.bak
+*.tmp
 *.py
-*.txt
+
+# --- Sistema operativo y editores ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# --- Credenciales ---
+.clasp.json
+node_modules/
+*.key
+*.pem
+credentials*.json
+secrets*.json
+.env
+.env.*

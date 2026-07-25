@@ -10,8 +10,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jguao18.github.io/sico-web/">
     <meta property="og:title" content="SICO — Control Inteligente y Respaldo de Obra">
-    <meta property="og:description" content="Reduzca hasta un 15% de pérdidas financieras en su proyecto de construcción. Control en tiempo real con respaldo NDA.">
+    <meta property="og:description" content="Audite caja menor, materiales, maquinaria y bitácora de su obra en tiempo real. Sus datos, su Drive, contrato NDA.">
     <meta property="og:image" content="https://jguao18.github.io/sico-web/assets/logo_final.jpeg">
+    <meta property="og:locale" content="es_CO">
+    <meta name="theme-color" content="#0F172A">
+
+    <!-- Favicons -->
+    <link rel="icon" href="assets/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+    <link rel="apple-touch-icon" href="assets/favicon-180.png">
+
+    <!-- Conexión anticipada a los CDN: recorta el tiempo hasta el primer render -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" as="image" href="assets/obra_hero.webp" type="image/webp">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -73,7 +87,53 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid #E2E8F0;
-            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+            /* Sombra en capas: una cercana y densa para definir el borde, otra
+               amplia y difusa para dar profundidad. Es lo que separa una tarjeta
+               que se ve "plana de plantilla" de una que se ve cara. */
+            box-shadow:
+                0 1px 2px rgba(15, 23, 42, 0.04),
+                0 8px 24px -6px rgba(15, 23, 42, 0.08),
+                0 24px 48px -24px rgba(15, 23, 42, 0.10);
+            transition: box-shadow .35s cubic-bezier(.4,0,.2,1), transform .35s cubic-bezier(.4,0,.2,1);
+        }
+        .glass-panel:hover {
+            box-shadow:
+                0 1px 2px rgba(15, 23, 42, 0.05),
+                0 12px 32px -8px rgba(15, 23, 42, 0.12),
+                0 32px 64px -28px rgba(15, 23, 42, 0.16);
+        }
+
+        /* ------------------------------------------------------------------
+           ACABADO TIPOGRÁFICO
+           Los títulos muy grandes con font-weight 900 necesitan tracking
+           negativo; sin él se leen anchos y baratos. Las cifras van en
+           tabular-nums para que no "bailen" al mover los sliders del ROI.
+           ------------------------------------------------------------------ */
+        h1, h2, h3 { letter-spacing: -0.022em; }
+        .font-black { letter-spacing: -0.025em; }
+        .font-mono, [id^="calc"], [id^="kpi"] {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum" 1;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Filete superior de marca: detalle de acabado de sitio corporativo */
+        .brand-rule {
+            height: 3px;
+            background: linear-gradient(90deg, #F59E0B 0%, #FBBF24 35%, #38BDF8 100%);
+        }
+
+        /* Respeta a quien tiene activado "reducir movimiento" en su sistema */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
         .glass-panel-light {
             background: #FEF3C7;
@@ -100,11 +160,15 @@
 
     <!-- NAVIGATION BAR -->
     <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-sico-border shadow-lg">
+        <div class="brand-rule"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <!-- LOGO OFICIAL FLUIDO -->
                 <div class="relative group cursor-pointer">
-                    <img src="assets/logo_final.jpeg" alt="Logo SICO" class="w-10 h-10 rounded-xl border border-amber-400/50 shadow-md shadow-amber-500/20 object-cover">
+                    <picture>
+                        <source srcset="assets/logo_sico.webp" type="image/webp">
+                        <img src="assets/logo_sico.png" alt="Logo SICO" width="44" height="40" decoding="async" class="h-10 w-auto object-contain">
+                    </picture>
                 </div>
                 <div>
                     <span class="text-xl font-black tracking-wider text-slate-900">SICO</span>
@@ -162,7 +226,10 @@
 
                 <!-- IMAGEN REAL DE OBRA Y MAQUINARIA DE IMPACTO -->
                 <div class="relative mx-auto max-w-5xl rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-200">
-                    <img src="assets/obra_hero.png" alt="Obra de Construcción y Maquinaria en Campo" class="w-full h-[380px] md:h-[480px] object-cover hover:scale-105 transition-transform duration-700">
+                    <picture>
+                        <source srcset="assets/obra_hero.webp" type="image/webp">
+                        <img src="assets/obra_hero.png" alt="Obra de construcción con maquinaria en campo" width="1024" height="1024" fetchpriority="high" decoding="async" class="w-full h-[380px] md:h-[480px] object-cover hover:scale-105 transition-transform duration-700">
+                    </picture>
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-6 md:p-8">
                         <div class="text-left text-white max-w-2xl">
                             <span class="bg-amber-500 text-slate-950 text-xs font-black px-3 py-1 rounded-md uppercase tracking-wider mb-2 inline-block">Control en Sitio Real</span>
@@ -184,7 +251,16 @@
                     Diagnóstico Financiero: ¿Cuánto Dinero está Perdiendo su Obra?
                 </p>
                 <p class="text-sico-textMuted text-base mt-4 font-medium leading-relaxed">
-                    Estudios institucionales de <strong>McKinsey & Company</strong> y el <strong>Lean Construction Institute (LCI)</strong> revelan que entre el <strong>5% y el 15% del presupuesto total de cualquier proyecto</strong> se pierde en sobrecostos invisibles, materiales no trazados y horas muertas en campo.
+                    <strong>McKinsey &amp; Company</strong> documenta que la productividad global de la construcción crece apenas
+                    <strong>0,4% anual</strong> desde el año 2000, y que los sobrecostos promedian el <strong>79%</strong> frente al
+                    presupuesto inicial en grandes proyectos. La literatura de <strong>Lean Construction</strong> ubica el desperdicio
+                    en más del <strong>50% del tiempo en sitio</strong>, concentrado en coordinar mano de obra y mover materiales.
+                </p>
+                <p class="text-sico-textMuted text-sm mt-3 font-medium leading-relaxed">
+                    Sobre esa base, nuestra estimación de trabajo es que entre el <strong>5% y el 15% del presupuesto</strong> de una
+                    obra se va en sobrecostos invisibles, materiales no trazados y horas muertas. Es un rango operativo, no una cifra
+                    publicada: lo usamos para dimensionar la conversación con usted, y lo primero que hace SICO es medir cuánto es
+                    en su obra en concreto.
                 </p>
             </div>
 
@@ -251,12 +327,12 @@
                         </div>
                     </div>
 
-                    <div class="border-t border-emerald-500/40 pt-4 flex justify-between items-center">
+                    <div class="border-t border-emerald-500/40 pt-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
                         <div>
-                            <span class="text-xs font-bold text-slate-600 uppercase block">Garantía de Retorno:</span>
-                            <span class="text-[10px] text-emerald-400">SICO se paga solo en los primeros 15 días de operación</span>
+                            <span class="text-xs font-bold text-slate-600 uppercase block">Qué recupera el control documental</span>
+                            <span class="text-[11px] text-slate-600">Entre el 20% y el 35% de esa fuga es trazable y evitable con soporte fotográfico y registro diario</span>
                         </div>
-                        <span class="text-2xl sm:text-3xl font-black text-emerald-600">+100% Utilidad Recuperada</span>
+                        <span class="text-2xl sm:text-3xl font-black text-emerald-600 whitespace-nowrap">1% a 5% del presupuesto</span>
                     </div>
                 </div>
             </div>
@@ -321,19 +397,29 @@
                             <span id="calcCostVal" class="text-sm sm:text-lg font-black text-amber-600 font-mono">Plan Medio · $4.5M COP</span>
                         </div>
 
-                        <!-- Métrica 3: Utilidad Limpia Recuperada (Esmeralda Armónica) -->
+                        <!-- Métrica 3: Resultado neto (conservador a optimista) -->
                         <div class="bg-emerald-50 p-4 sm:p-5 rounded-2xl border border-emerald-200 flex justify-between items-center transition-all">
                             <div>
-                                <span class="text-[10px] font-black text-emerald-700 uppercase tracking-widest block mb-0.5">Utilidad Limpia Recuperada</span>
-                                <span class="text-xs text-emerald-700 font-medium">Dinero devuelto a su bolsillo</span>
+                                <span class="text-[10px] font-black text-emerald-700 uppercase tracking-widest block mb-0.5">Resultado Neto Estimado</span>
+                                <span class="text-xs text-emerald-700 font-medium">Recuperado menos inversión · escenario conservador a optimista</span>
                             </div>
-                            <span id="calcNetVal" class="text-xl sm:text-3xl font-black text-emerald-600 font-mono">+$70.5M a +$220.5M</span>
+                            <span id="calcNetVal" class="text-xl sm:text-3xl font-black text-emerald-600 font-mono">$10.5M a $74.3M</span>
                         </div>
 
-                        <!-- Banner Payback / Retorno -->
+                        <!-- Banner de punto de equilibrio -->
                         <div class="bg-white border border-slate-200 p-3.5 rounded-2xl text-center">
-                            <span id="calcPaybackVal" class="text-xs sm:text-sm font-extrabold text-amber-300">⏱️ SICO recupera la inversión en los primeros 12 días de obra</span>
+                            <span id="calcPaybackVal" class="text-xs sm:text-sm font-extrabold text-slate-700">Ajuste los controles para estimar el punto de equilibrio.</span>
                         </div>
+
+                        <!-- Transparencia del modelo -->
+                        <p class="text-[11px] text-slate-500 leading-relaxed px-1">
+                            <strong class="text-slate-700">Cómo se calcula:</strong> partimos del rango de fuga documentado
+                            para el sector (5% a 15% del presupuesto) y aplicamos una tasa de recuperación del
+                            <strong>20% al 35%</strong> sobre esa fuga. No asumimos que el software recupera la totalidad
+                            de la pérdida: SICO aporta trazabilidad y evidencia; las decisiones de compra, negociación y
+                            programación siguen siendo suyas. Es una estimación para dimensionar la conversación, no una
+                            promesa de rendimiento.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -366,7 +452,10 @@
                                 Adiós a los recibos perdidos. El residente ingresa el monto, el concepto y toma una foto de la factura al instante. SICO inyecta el gasto directamente en su balance financiero.
                             </p>
                             <div class="rounded-2xl overflow-hidden shadow-md border border-amber-200">
-                                <img src="assets/caja_menor.png" alt="Control Caja Menor" class="w-full h-44 object-cover">
+                                <picture>
+                                    <source srcset="assets/caja_menor.webp" type="image/webp">
+                                    <img src="assets/caja_menor.png" alt="Registro de caja menor con foto de factura desde el bot" width="900" height="900" loading="lazy" decoding="async" class="w-full h-44 object-cover">
+                                </picture>
                             </div>
                         </div>
                     </div>
@@ -384,7 +473,10 @@
                                 Controle cada bulto de cemento y varilla de acero que entra o sale de la obra. El bot actualiza automáticamente las alertas de stock en su dashboard.
                             </p>
                             <div class="rounded-2xl overflow-hidden shadow-md border border-amber-200">
-                                <img src="assets/materiales.png" alt="Materiales de Construcción en Obra" class="w-full h-44 object-cover">
+                                <picture>
+                                    <source srcset="assets/materiales.webp" type="image/webp">
+                                    <img src="assets/materiales.png" alt="Control de entrada y salida de materiales en obra" width="900" height="900" loading="lazy" decoding="async" class="w-full h-44 object-cover">
+                                </picture>
                             </div>
                         </div>
                     </div>
@@ -402,7 +494,10 @@
                                 Controle días de permanencia, tarifas diarias y horas de uso de excavadoras, compactadores y mezcladoras para evitar cobros indebidos por stand-by.
                             </p>
                             <div class="rounded-2xl overflow-hidden shadow-md border border-amber-200">
-                                <img src="assets/maquinaria.png" alt="Maquinaria Pesada en Obra" class="w-full h-44 object-cover">
+                                <picture>
+                                    <source srcset="assets/maquinaria.webp" type="image/webp">
+                                    <img src="assets/maquinaria.png" alt="Auditoría de maquinaria y horómetros en obra" width="900" height="900" loading="lazy" decoding="async" class="w-full h-44 object-cover">
+                                </picture>
                             </div>
                         </div>
                     </div>
@@ -420,7 +515,10 @@
                                 Este módulo es el corazón de la obra. Permite reportar clima, avances fotográficos, imprevistos y registrar datos clave de la jornada sin fricción.
                             </p>
                             <div class="rounded-2xl overflow-hidden shadow-md border border-amber-200">
-                                <img src="assets/bitacora_obra.png" alt="Bitácora Diaria" class="w-full h-44 object-cover">
+                                <picture>
+                                    <source srcset="assets/bitacora_obra.webp" type="image/webp">
+                                    <img src="assets/bitacora_obra.png" alt="Bitácora diaria de obra con evidencia fotográfica" width="900" height="900" loading="lazy" decoding="async" class="w-full h-44 object-cover">
+                                </picture>
                             </div>
                         </div>
                     </div>
@@ -841,8 +939,8 @@
                 </div>
                 <div class="glass-panel p-5 rounded-2xl border border-slate-200 flex flex-col items-center gap-2">
                     <i class="fa-solid fa-cloud-arrow-up text-3xl text-sky-400 mb-1"></i>
-                    <span class="text-xs font-bold text-slate-900">Infraestructura Nube</span>
-                    <span class="text-[10px] text-slate-600">Respaldos diarios automáticos</span>
+                    <span class="text-xs font-bold text-slate-900">Infraestructura Google</span>
+                    <span class="text-[10px] text-slate-600">Sus datos viven en Drive y Sheets, con el versionado de Google</span>
                 </div>
                 <div class="glass-panel p-5 rounded-2xl border border-slate-200 flex flex-col items-center gap-2">
                     <i class="fa-solid fa-user-shield text-3xl text-emerald-400 mb-1"></i>
@@ -851,8 +949,8 @@
                 </div>
                 <div class="glass-panel p-5 rounded-2xl border border-slate-200 flex flex-col items-center gap-2">
                     <i class="fa-solid fa-lock text-3xl text-purple-400 mb-1"></i>
-                    <span class="text-xs font-bold text-slate-900">Inmutabilidad de Datos</span>
-                    <span class="text-[10px] text-slate-600">Auditoría libre de alteración</span>
+                    <span class="text-xs font-bold text-slate-900">Registro Solo de Entrada</span>
+                    <span class="text-[10px] text-slate-600">El personal de campo inyecta datos; no puede borrar ni editar lo ya reportado</span>
                 </div>
             </div>
         </div>
@@ -866,7 +964,7 @@
                 <p class="text-3xl sm:text-5xl font-black text-slate-900">
                     Venda Resultados, <br class="hidden sm:block">No Funciones.
                 </p>
-                <p class="text-sico-textMuted text-base mt-4 font-medium">Todos los planes incluyen <strong>Acceso Web 24/7, Drive/Sheets dedicados, Correo Corporativo y Contrato NDA</strong> sin costo por usuario adicional.</p>
+                <p class="text-sico-textMuted text-base mt-4 font-medium">Todos los planes incluyen <strong>Acceso Web 24/7, Drive/Sheets dedicados, Correo Corporativo y Contrato NDA</strong>, sin costo por usuario adicional en el dashboard. En campo se habilitan hasta 5 personas reportando por obra, que es lo que necesita una obra bien organizada.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
@@ -916,7 +1014,7 @@
                             <li class="flex items-start gap-3"><i class="fa-solid fa-layer-group text-sico-accent mt-1"></i> <span><strong>4 Módulos a Elección:</strong> Intercambiables libremente en la operación.</span></li>
                             <li class="flex items-start gap-3"><i class="fa-solid fa-bell text-sico-accent mt-1"></i> <span><strong>Dashboard (Modo Alertas):</strong> Semáforos y advertencias automáticas por sobrecostos o desfasajes.</span></li>
                             <li class="flex items-start gap-3"><i class="fa-solid fa-clock-rotate-left text-sico-accent mt-1"></i> <span><strong>Presupuesto Dinámico:</strong> Reloj visual de control de presupuesto consumido vs. planeado.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-file-invoice text-sico-accent mt-1"></i> <span><strong>Informes Estandarizados:</strong> Reportes semanales y mensuales de caja, materiales y equipos.</span></li>
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-file-invoice text-sico-accent mt-1"></i> <span><strong>Informes Estandarizados:</strong> Reportes semanales y mensuales de caja, materiales y equipos, entregados en su correo corporativo.</span></li>
                         </ul>
                     </div>
                     <a href="https://wa.me/573012699885?text=Hola,%20deseo%20activar%20el%20Plan%20Medio%20de%20SICO." target="_blank" class="w-full text-center py-4 rounded-xl amber-gradient hover:scale-105 text-white font-black text-sm transition-all block shadow-lg shadow-amber-500/30">Seleccionar Plan Medio</a>
@@ -942,13 +1040,21 @@
                         <div class="bg-amber-100 border border-amber-300 p-2.5 rounded-xl text-center mb-6">
                             <span class="text-xs text-amber-800 font-bold"><i class="fa-solid fa-desktop mr-1"></i> Acceso Gerencial Ilimitado al Dashboard</span>
                         </div>
-                        <p class="text-sm text-slate-600 mb-6 font-medium">Para obras de gran envergadura que requieren auditoría predictiva e informes de junta automatizados.</p>
-                        <ul class="space-y-3.5 text-sm text-slate-900 mb-8 font-medium">
+                        <p class="text-sm text-slate-600 mb-6 font-medium">Para obras de gran envergadura y juntas directivas. Se cotiza y se construye contra su alcance real, con cronograma de entrega por escrito.</p>
+                        <ul class="space-y-3.5 text-sm text-slate-900 mb-6 font-medium">
                             <li class="flex items-start gap-3"><i class="fa-solid fa-layer-group text-amber-500 mt-1"></i> <span><strong>Hasta 6 Módulos:</strong> Suite completa de control operativo y administrativo.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-brain text-amber-500 mt-1 text-lg glow-accent"></i> <span><strong>Dashboard (Modo Predictivo):</strong> Algoritmo EAC que calcula el costo final estimado y liquidación al destajo.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-file-contract text-amber-500 mt-1"></i> <span><strong>Plantillas Propias Automatizadas (El Gran Diferenciador):</strong> Diligenciamiento automático de los formatos oficiales en Word/Excel/PDF de su constructora, listos para Junta.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-network-wired text-amber-500 mt-1"></i> <span><strong>Visión Multi-Obra:</strong> Consolidación corporativa y descuento VIP en Setup Fee.</span></li>
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-file-contract text-amber-500 mt-1"></i> <span><strong>Plantillas Propias Automatizadas:</strong> Diligenciamiento de los formatos oficiales en Word/Excel/PDF de su constructora, listos para Junta.</span></li>
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-chart-line text-amber-500 mt-1"></i> <span><strong>Proyección de Costo Final (EAC):</strong> Estimación del costo al cierre según el ritmo de gasto y el avance reportado.</span></li>
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-network-wired text-amber-500 mt-1"></i> <span><strong>Visión Multi-Obra:</strong> Consolidación corporativa y descuento en el Setup Fee.</span></li>
                         </ul>
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-8">
+                            <p class="text-[11px] text-slate-600 leading-relaxed font-medium">
+                                <i class="fa-solid fa-circle-info text-slate-400 mr-1"></i>
+                                El Plan Pro se implementa por fases sobre la base operativa ya en funcionamiento. El alcance,
+                                los tiempos de cada entrega y los criterios de aceptación quedan definidos en la propuesta,
+                                antes de firmar.
+                            </p>
+                        </div>
                     </div>
                     <a href="https://wa.me/573012699885?text=Hola,%20deseo%20activar%20el%20Plan%20Pro%20de%20SICO." target="_blank" class="w-full text-center py-4 rounded-xl amber-gradient text-white font-black text-sm hover:scale-105 transition-transform shadow-lg shadow-amber-500/30 block mt-auto">Activar Plan Pro</a>
                 </div>
@@ -998,7 +1104,7 @@
                         <i class="fa-solid fa-chevron-down text-sico-accent group-open:rotate-180 transition-transform"></i>
                     </summary>
                     <p class="text-xs sm:text-sm text-slate-600 mt-3 pt-3 border-t border-slate-200 leading-relaxed font-medium">
-                        La puesta en marcha toma menos de 48 horas. Configuramos los permisos, cargamos la estructura inicial de su obra y su personal puede empezar a reportar el mismo día.
+                        La configuración técnica toma menos de 48 horas: permisos, estructura de su obra y accesos quedan listos, y su personal puede empezar a reportar el mismo día. La adopción completa en campo toma una semana, y la acompañamos día a día hasta que el equipo reporte solo.
                     </p>
                 </details>
 
@@ -1119,11 +1225,46 @@
         }
 
         // Lógica de la Calculadora Dinámica de ROI
+        // =====================================================================
+        // CALCULADORA DE RETORNO — MODELO REVISADO (2026-07-25)
+        //
+        // Qué cambió y por qué:
+        //
+        // 1. Se eliminó la línea `if (paybackDays > 25) paybackDays = 12;`,
+        //    que forzaba el resultado a 12 días cuando el cálculo real daba
+        //    más. Una herramienta que vende control financiero no puede
+        //    falsear su propia calculadora financiera.
+        //
+        // 2. La versión anterior atribuía a SICO el 100% de la fuga del
+        //    sector. SICO da visibilidad: no compra mejor, no negocia
+        //    alquileres y no evita la lluvia. Ahora se aplica una tasa de
+        //    recuperación explícita (20%-35% de la fuga) y se declara en
+        //    pantalla. Es un número defendible ante un gerente que verifique.
+        //
+        // 3. Los negativos ya no se muestran con un "+" delante. Antes una
+        //    obra de $10M a 36 meses mostraba literalmente "+$-8500k".
+        //
+        // 4. El plan sugerido usa umbrales continuos y coherentes con la
+        //    sección de planes (el Plan Básico son 2 módulos, no 1).
+        // =====================================================================
+
+        // Fracción de la fuga que el control documental puede efectivamente
+        // recuperar. Conservador a propósito.
+        const TASA_RECUPERACION_MIN = 0.20;
+        const TASA_RECUPERACION_MAX = 0.35;
+
+        function formatoMillones(val) {
+            const signo = val < 0 ? '-' : '';
+            const abs = Math.abs(val);
+            if (abs < 1) return signo + '$' + Math.round(abs * 1000) + 'k';
+            if (abs >= 1000) return signo + '$' + (abs / 1000).toFixed(2).replace(/\.?0+$/, '') + ' Mil M';
+            return signo + '$' + abs.toFixed(1).replace(/\.0$/, '') + 'M';
+        }
+
         function updateROICalc() {
             const budgetM = parseInt(document.getElementById('calcBudgetRange').value);
             const months = parseInt(document.getElementById('calcMonthsRange').value);
 
-            // Formatear texto de Presupuesto
             let budgetText = '';
             if (budgetM >= 1000) {
                 budgetText = '$' + (budgetM / 1000).toFixed(1).replace('.0', '') + ' Mil Millones COP';
@@ -1133,38 +1274,73 @@
             document.getElementById('calcBudgetVal').innerText = budgetText;
             document.getElementById('calcMonthsVal').innerText = months + (months === 1 ? ' Mes' : ' Meses');
 
-            // Cálculo de Fuga (5% min, 15% max)
-            const minLossM = budgetM * 0.05;
-            const maxLossM = budgetM * 0.15;
+            // Fuga del sector: 5% a 15% del presupuesto.
+            const fugaMinM = budgetM * 0.05;
+            const fugaMaxM = budgetM * 0.15;
 
-            // Selección de Plan SICO sugerido según escala de obra
-            let monthlyFee = 750000;
-            let planName = 'Plan Medio';
+            // Lo que SICO puede recuperar de esa fuga.
+            const recuperaMinM = fugaMinM * TASA_RECUPERACION_MIN;
+            const recuperaMaxM = fugaMaxM * TASA_RECUPERACION_MAX;
+
+            // Plan sugerido según escala de obra.
+            let monthlyFee, planName;
             if (budgetM < 300) {
                 monthlyFee = 250000;
-                planName = 'Plan Básico (1 Módulo)';
-            } else if (budgetM > 1500) {
+                planName = 'Plan Básico (2 módulos)';
+            } else if (budgetM <= 1500) {
+                monthlyFee = 750000;
+                planName = 'Plan Medio (4 módulos)';
+            } else {
                 monthlyFee = 1800000;
-                planName = 'Plan Pro (Corporativo)';
+                planName = 'Plan Pro (6 módulos)';
             }
 
-            const totalInvCOP = monthlyFee * months;
-            const totalInvM = totalInvCOP / 1000000;
+            const totalInvM = (monthlyFee * months) / 1000000;
 
-            const netMinM = minLossM - totalInvM;
-            const netMaxM = maxLossM - totalInvM;
+            const netoMinM = recuperaMinM - totalInvM;
+            const netoMaxM = recuperaMaxM - totalInvM;
 
-            // Formatear pérdidas y ganancias
-            const formatM = (val) => val < 1 ? '$' + Math.round(val * 1000) + 'k' : '$' + val.toFixed(1) + 'M';
+            document.getElementById('calcLossVal').innerText =
+                '-' + formatoMillones(fugaMinM) + ' a -' + formatoMillones(fugaMaxM);
 
-            document.getElementById('calcLossVal').innerText = '-' + formatM(minLossM) + ' a -' + formatM(maxLossM);
-            document.getElementById('calcCostVal').innerText = planName + ' · ' + formatM(totalInvM) + ' COP';
-            document.getElementById('calcNetVal').innerText = '+' + formatM(netMinM) + ' a +' + formatM(netMaxM);
+            document.getElementById('calcCostVal').innerText =
+                planName + ' · ' + formatoMillones(totalInvM) + ' COP';
 
-            // Días de Payback (Retorno de inversión)
-            let paybackDays = Math.max(4, Math.round((totalInvM / (minLossM / (months * 30)))));
-            if (paybackDays > 25) paybackDays = 12;
-            document.getElementById('calcPaybackVal').innerHTML = '⏱️ SICO recupera la inversión en los primeros ' + paybackDays + ' días de obra';
+            // Escenario conservador y optimista, con su signo real.
+            document.getElementById('calcNetVal').innerText =
+                formatoMillones(netoMinM) + ' a ' + formatoMillones(netoMaxM);
+
+            // Punto de equilibrio: cuántos meses de operación se necesitan
+            // para que lo recuperado iguale lo invertido, en el escenario
+            // conservador. Sin topes artificiales.
+            const recuperadoPorMesM = recuperaMinM / months;
+            const cuotaMensualM = monthlyFee / 1000000;
+
+            const leyenda = document.getElementById('calcPaybackVal');
+
+            if (recuperadoPorMesM <= 0) {
+                leyenda.innerHTML = 'Ajuste el presupuesto para estimar el punto de equilibrio.';
+                return;
+            }
+
+            const mesesEquilibrio = cuotaMensualM / recuperadoPorMesM;
+
+            if (mesesEquilibrio <= months) {
+                const diasEquilibrio = Math.max(1, Math.round(mesesEquilibrio * 30));
+                if (diasEquilibrio <= 60) {
+                    leyenda.innerHTML =
+                        'En el escenario conservador, SICO cubre su costo en aproximadamente <strong>' +
+                        diasEquilibrio + ' días</strong> de operación.';
+                } else {
+                    leyenda.innerHTML =
+                        'En el escenario conservador, SICO cubre su costo en aproximadamente <strong>' +
+                        mesesEquilibrio.toFixed(1) + ' meses</strong> de operación.';
+                }
+            } else {
+                leyenda.innerHTML =
+                    'En una obra de esta escala, el retorno es marginal. ' +
+                    '<strong>Hablemos antes de contratar:</strong> puede que un plan menor le sirva mejor.';
+            }
         }
 
         // Ejecutar cálculo inicial al cargar
