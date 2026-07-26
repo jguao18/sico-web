@@ -1,57 +1,49 @@
 # ==========================================================
 # .gitignore — Repositorio PÚBLICO sico-web (GitHub Pages)
 #
-# ⚠️ ESTE REPOSITORIO ES PÚBLICO. Sirve la landing en
-#    https://jguao18.github.io/sico-web/
+# ⚠️  ESTE REPOSITORIO ES PÚBLICO.
+#     Sirve la landing en https://jguao18.github.io/sico-web/
+#     Todo lo que entre aquí lo puede leer cualquier persona.
 #
-# Regla única: aquí SOLO entra lo que puede leer cualquier persona
-# en internet. Es decir: la landing y sus imágenes. Nada más.
+# ESTRATEGIA: LISTA BLANCA.
 #
-# El código fuente de SICO (Apps Script y dashboard) va en un
-# repositorio PRIVADO aparte. Ver PUBLICAR.md.
+# Se ignora TODO por defecto y se habilita explícitamente solo lo que
+# compone la página pública. Si mañana aparece una carpeta nueva en el
+# proyecto, queda fuera automáticamente.
+#
+# Se hizo así porque la versión anterior usaba lista negra —prohibir
+# carpetas por nombre— y el 25-jul-2026 se coló al commit el código
+# fuente completo, incluido el token de Telegram, cuando el proyecto
+# se reorganizó en carpetas nuevas que nadie había previsto.
+#
+# PARA AGREGAR ALGO NUEVO A LA WEB: añádelo abajo con "!" delante.
+# Si no está en esta lista, no se publica. Esa es la idea.
 # ==========================================================
 
-# --- CÓDIGO FUENTE: nunca en el repositorio público ---
-# El Manual Maestro define el código como propiedad exclusiva de SICO.
-# Publicarlo aquí lo entregaría gratis y expondría la lógica de
-# autorización, los nombres de las pestañas y la estructura de datos.
-02_Codigo_Apps_Script/
-dashboard/
-backup/
+# 1. Ignorar absolutamente todo
+/*
 
-# --- Datos reales de clientes ---
-04_Bases_de_Datos_Excel/
-*.xlsx
-*.xls
-*.docx
+# 2. Habilitar solo lo que compone la landing pública
+!.gitignore
+!index.html
+!assets/
 
-# --- Estrategia comercial interna (precios, márgenes, guiones) ---
-sico_estado_actual/
-AUDITORIA DETALLADA SICO/
-Alcance base estrtucutral sico.md
-Diseño visual/
-03_Presentacion_y_Comercial/
+# 3. Dentro de assets, solo imágenes e iconos
+assets/*
+!assets/*.png
+!assets/*.jpg
+!assets/*.jpeg
+!assets/*.webp
+!assets/*.svg
+!assets/*.ico
 
-# --- Material de trabajo desechable ---
-scratch/
-_archivo/
-*.bak
-*.tmp
-*.py
-
-# --- Sistema operativo y editores ---
-.DS_Store
-Thumbs.db
-desktop.ini
-.vscode/
-.idea/
-
-# --- Credenciales ---
-.clasp.json
-node_modules/
-*.key
-*.pem
-credentials*.json
-secrets*.json
-.env
-.env.*
+# ==========================================================
+# QUÉ QUEDA FUERA Y POR QUÉ (referencia rápida)
+#
+#   Código Apps Script  → propiedad intelectual. Va en repo privado.
+#   dashboard/          → expone la lógica de negocio y el endpoint.
+#   backup-monolito/    → contiene el token de Telegram en texto plano.
+#   Datos de clientes   → presupuestos y cajas menores de obras reales.
+#   Material comercial  → precios internos, márgenes, guiones de venta.
+#   Documentos de obra  → planos, actas, informes del cliente.
+# ==========================================================

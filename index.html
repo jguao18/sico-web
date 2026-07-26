@@ -394,7 +394,7 @@
                                 <span class="text-[10px] font-black text-amber-700 uppercase tracking-widest block mb-0.5">Inversión SICO en el Proyecto</span>
                                 <span class="text-xs text-slate-600 font-medium">Costo total durante la obra</span>
                             </div>
-                            <span id="calcCostVal" class="text-sm sm:text-lg font-black text-amber-600 font-mono">Plan Medio · $4.5M COP</span>
+                            <span id="calcCostVal" class="text-sm sm:text-lg font-black text-amber-600 font-mono">Obra de $800M a $2.500M · $6.8M COP</span>
                         </div>
 
                         <!-- Métrica 3: Resultado neto (conservador a optimista) -->
@@ -828,7 +828,7 @@
                 <!-- PREVIEW 5: BITÁCORA WORD -->
                 <div id="repPreview-bitacora" class="hidden p-4 sm:p-6 space-y-6 animate-fade-in flex flex-col md:flex-row gap-8">
                     <div class="md:w-1/3">
-                        <span class="text-[11px] text-sico-accent font-black uppercase tracking-wider">Entregable Legal Exclusivo Plan Pro</span>
+                        <span class="text-[11px] text-sico-accent font-black uppercase tracking-wider">Entregable legal incluido</span>
                         <h4 class="text-2xl font-bold text-slate-900 mb-4">Bitácora Oficial Generada</h4>
                         <p class="text-sm text-slate-600 leading-relaxed mb-6">
                             Condensa la información del día enviada por el residente (clima, novedades, fotos) y autogenera un documento estructurado listo para la interventoría.
@@ -959,107 +959,120 @@
     <!-- PLANES Y PROPUESTA COMERCIAL -->
     <section id="planes" class="py-24 bg-sico-bgBase">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-black text-sico-accent tracking-widest uppercase mb-3">Planes Basados en Inteligencia Gerencial</h2>
+
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-black text-sico-accent tracking-widest uppercase mb-3">Un solo plan</h2>
                 <p class="text-3xl sm:text-5xl font-black text-slate-900">
-                    Venda Resultados, <br class="hidden sm:block">No Funciones.
+                    Todo incluido.<br class="hidden sm:block">Paga según el tamaño de su obra.
                 </p>
-                <p class="text-sico-textMuted text-base mt-4 font-medium">Todos los planes incluyen <strong>Acceso Web 24/7, Drive/Sheets dedicados, Correo Corporativo y Contrato NDA</strong>, sin costo por usuario adicional en el dashboard. En campo se habilitan hasta 5 personas reportando por obra, que es lo que necesita una obra bien organizada.</p>
+                <p class="text-sico-textMuted text-base mt-5 font-medium leading-relaxed">
+                    No hay versiones recortadas. El valor de SICO está en los datos, y limitar módulos
+                    limita datos. Su obra recibe el sistema completo desde el primer día; lo único que
+                    cambia es la mensualidad, según el presupuesto que esté administrando.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
-                
-                <!-- 🟢 PLAN BÁSICO / CONTROL VISUAL ($250k) -->
-                <div class="glass-panel p-8 rounded-3xl border border-slate-200 flex flex-col justify-between hover:border-emerald-500/50 transition-colors">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-[11px] font-black text-emerald-600 uppercase tracking-widest">Plan 1: Básico</span>
-                            <span class="text-[10px] bg-slate-100 text-slate-800 border border-slate-200 px-2.5 py-1 rounded-full font-mono">Micro-Obra</span>
+            <!-- TABLA DE PRECIOS POR TAMAÑO DE OBRA -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-14">
+
+                <div class="glass-panel p-8 rounded-3xl border border-slate-200 text-center flex flex-col">
+                    <span class="text-[11px] font-black text-slate-500 uppercase tracking-widest">Obra hasta</span>
+                    <div class="text-2xl font-black text-slate-900 mt-1 mb-5">$800 millones</div>
+                    <div class="border-t border-slate-200 pt-5 mt-auto">
+                        <div class="flex items-end justify-center gap-1">
+                            <span class="text-4xl font-black text-slate-900">$450.000</span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">"Control Visual"</h3>
-                        <div class="my-3 flex items-end gap-1">
-                            <span class="text-4xl font-black text-slate-900">$250k</span>
-                            <span class="text-xs text-slate-500 font-bold mb-1">COP/mes/obra</span>
-                        </div>
-                        <div class="bg-emerald-100 border border-emerald-300 p-2.5 rounded-xl text-center mb-6">
-                            <span class="text-xs text-emerald-800 font-bold"><i class="fa-solid fa-desktop mr-1"></i> Acceso Gerencial Ilimitado al Dashboard</span>
-                        </div>
-                        <p class="text-sm text-slate-600 mb-6 font-medium">Ideal para obras pequeñas o contratistas independientes que buscan dejar el papel y tener orden digital.</p>
-                        <ul class="space-y-3.5 text-sm text-slate-600 mb-8">
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-layer-group text-emerald-500 mt-1"></i> <span><strong>2 Módulos a Elección:</strong> Intercambiables según la necesidad de la obra.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-chart-pie text-emerald-500 mt-1"></i> <span><strong>Dashboard (Modo Espejo):</strong> Gráficas de distribución de gastos y fotos de facturas en la nube.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-file-excel text-emerald-500 mt-1"></i> <span><strong>Informes Operativos:</strong> Descarga de reportes básicos por módulo organizados en Excel.</span></li>
-                        </ul>
+                        <span class="text-xs text-slate-500 font-bold">COP al mes por obra</span>
                     </div>
-                    <a href="https://wa.me/573012699885?text=Hola,%20deseo%20activar%20el%20Plan%20B%C3%A1sico%20de%20SICO." target="_blank" class="w-full text-center py-4 rounded-xl amber-gradient hover:scale-105 text-white font-black text-sm transition-all block shadow-lg shadow-amber-500/30">Iniciar Plan Básico</a>
                 </div>
 
-                <!-- 🟡 PLAN MEDIO / CONTROL INTELIGENTE ($750k) -->
-                <div class="glass-panel p-8 rounded-3xl border border-slate-200 flex flex-col justify-between hover:border-amber-500/50 transition-colors">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-[11px] font-black text-sico-accent uppercase tracking-widest">Plan 2: Medio</span>
-                            <span class="text-[10px] bg-amber-100 text-amber-800 border border-amber-300 px-2.5 py-1 rounded-full font-mono">Más Vendido</span>
+                <div class="glass-panel p-8 rounded-3xl border-2 border-sico-accent text-center flex flex-col relative shadow-[0_0_36px_rgba(245,158,11,.16)] md:-translate-y-3">
+                    <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 amber-gradient text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">El más común</span>
+                    <span class="text-[11px] font-black text-amber-700 uppercase tracking-widest mt-2">Obra entre</span>
+                    <div class="text-2xl font-black text-slate-900 mt-1 mb-5">$800M y $2.500M</div>
+                    <div class="border-t border-amber-200 pt-5 mt-auto">
+                        <div class="flex items-end justify-center gap-1">
+                            <span class="text-4xl font-black text-slate-900">$850.000</span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">"Control Inteligente"</h3>
-                        <div class="my-3 flex items-end gap-1">
-                            <span class="text-4xl font-black text-slate-900">$750k</span>
-                            <span class="text-xs text-slate-500 font-bold mb-1">COP/mes/obra</span>
-                        </div>
-                        <div class="bg-amber-100 border border-amber-300 p-2.5 rounded-xl text-center mb-6">
-                            <span class="text-xs text-amber-800 font-bold"><i class="fa-solid fa-desktop mr-1"></i> Acceso Gerencial Ilimitado al Dashboard</span>
-                        </div>
-                        <p class="text-sm text-slate-600 mb-6 font-medium">Para constructoras medianas que necesitan un auditor activo que detecte fugas y sobrecostos.</p>
-                        <ul class="space-y-3.5 text-sm text-slate-600 mb-8">
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-layer-group text-sico-accent mt-1"></i> <span><strong>4 Módulos a Elección:</strong> Intercambiables libremente en la operación.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-bell text-sico-accent mt-1"></i> <span><strong>Dashboard (Modo Alertas):</strong> Semáforos y advertencias automáticas por sobrecostos o desfasajes.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-clock-rotate-left text-sico-accent mt-1"></i> <span><strong>Presupuesto Dinámico:</strong> Reloj visual de control de presupuesto consumido vs. planeado.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-file-invoice text-sico-accent mt-1"></i> <span><strong>Informes Estandarizados:</strong> Reportes semanales y mensuales de caja, materiales y equipos, entregados en su correo corporativo.</span></li>
-                        </ul>
+                        <span class="text-xs text-slate-500 font-bold">COP al mes por obra</span>
                     </div>
-                    <a href="https://wa.me/573012699885?text=Hola,%20deseo%20activar%20el%20Plan%20Medio%20de%20SICO." target="_blank" class="w-full text-center py-4 rounded-xl amber-gradient hover:scale-105 text-white font-black text-sm transition-all block shadow-lg shadow-amber-500/30">Seleccionar Plan Medio</a>
                 </div>
 
-                <!-- 🔴 PLAN PRO / GERENCIA CORPORATIVA ($1.8M+) -->
-                <div class="glass-panel p-8 rounded-3xl border-2 border-sico-accent relative shadow-[0_0_30px_rgba(245,158,11,0.15)] flex flex-col justify-between transform md:-translate-y-4">
-                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 amber-gradient text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Corporativo</span>
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-[11px] font-black text-sico-accent uppercase tracking-widest">Plan 3: Pro</span>
-                            <span class="text-[10px] bg-amber-100 text-amber-800 border border-amber-300 px-2.5 py-1 rounded-full font-mono font-bold">Enterprise</span>
+                <div class="glass-panel p-8 rounded-3xl border border-slate-200 text-center flex flex-col">
+                    <span class="text-[11px] font-black text-slate-500 uppercase tracking-widest">Obra desde</span>
+                    <div class="text-2xl font-black text-slate-900 mt-1 mb-5">$2.500 millones</div>
+                    <div class="border-t border-slate-200 pt-5 mt-auto">
+                        <div class="flex items-end justify-center gap-1">
+                            <span class="text-4xl font-black text-slate-900">$1.500.000</span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">"Gerencia Corporativa"</h3>
-                        <div class="my-3 flex flex-col items-start gap-0.5">
-                            <div class="flex items-end gap-1">
-                                <span class="text-xs font-bold text-amber-600">Desde</span>
-                                <span class="text-3xl sm:text-4xl font-black text-slate-900">$1.800.000</span>
-                                <span class="text-xs text-slate-500 font-bold mb-1">COP/mes</span>
-                            </div>
-                            <span class="text-[11px] text-slate-500 font-medium italic">Cotización a medida según alcance</span>
-                        </div>
-                        <div class="bg-amber-100 border border-amber-300 p-2.5 rounded-xl text-center mb-6">
-                            <span class="text-xs text-amber-800 font-bold"><i class="fa-solid fa-desktop mr-1"></i> Acceso Gerencial Ilimitado al Dashboard</span>
-                        </div>
-                        <p class="text-sm text-slate-600 mb-6 font-medium">Para obras de gran envergadura y juntas directivas. Se cotiza y se construye contra su alcance real, con cronograma de entrega por escrito.</p>
-                        <ul class="space-y-3.5 text-sm text-slate-900 mb-6 font-medium">
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-layer-group text-amber-500 mt-1"></i> <span><strong>Hasta 6 Módulos:</strong> Suite completa de control operativo y administrativo.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-file-contract text-amber-500 mt-1"></i> <span><strong>Plantillas Propias Automatizadas:</strong> Diligenciamiento de los formatos oficiales en Word/Excel/PDF de su constructora, listos para Junta.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-chart-line text-amber-500 mt-1"></i> <span><strong>Proyección de Costo Final (EAC):</strong> Estimación del costo al cierre según el ritmo de gasto y el avance reportado.</span></li>
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-network-wired text-amber-500 mt-1"></i> <span><strong>Visión Multi-Obra:</strong> Consolidación corporativa y descuento en el Setup Fee.</span></li>
-                        </ul>
-                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-8">
-                            <p class="text-[11px] text-slate-600 leading-relaxed font-medium">
-                                <i class="fa-solid fa-circle-info text-slate-400 mr-1"></i>
-                                El Plan Pro se implementa por fases sobre la base operativa ya en funcionamiento. El alcance,
-                                los tiempos de cada entrega y los criterios de aceptación quedan definidos en la propuesta,
-                                antes de firmar.
-                            </p>
-                        </div>
+                        <span class="text-xs text-slate-500 font-bold">COP al mes por obra</span>
                     </div>
-                    <a href="https://wa.me/573012699885?text=Hola,%20deseo%20activar%20el%20Plan%20Pro%20de%20SICO." target="_blank" class="w-full text-center py-4 rounded-xl amber-gradient text-white font-black text-sm hover:scale-105 transition-transform shadow-lg shadow-amber-500/30 block mt-auto">Activar Plan Pro</a>
                 </div>
-
             </div>
+
+            <!-- QUÉ INCLUYE, PARA TODOS -->
+            <div class="glass-panel rounded-3xl border border-slate-200 p-8 sm:p-10 max-w-5xl mx-auto mb-10">
+                <h3 class="text-center text-lg font-bold text-slate-900 mb-2">Qué incluye, sin importar el tamaño</h3>
+                <p class="text-center text-sm text-slate-600 mb-8 font-medium">Lo mismo para todos. No hay funciones bloqueadas.</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span class="text-sm text-slate-800"><strong>Todos los módulos:</strong> caja menor, materiales, equipos, bitácora y visitas.</span></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span class="text-sm text-slate-800"><strong>Captura por Telegram:</strong> su personal de campo reporta en 60 segundos.</span></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span class="text-sm text-slate-800"><strong>Dashboard web 24/7:</strong> desde el celular o el computador.</span></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span class="text-sm text-slate-800"><strong>Alertas de desviación:</strong> qué atender esta semana y cuánto cuesta no hacerlo.</span></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span class="text-sm text-slate-800"><strong>Presupuesto contra avance:</strong> consumo real por capítulo e ítem.</span></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span class="text-sm text-slate-800"><strong>Proyección de cierre:</strong> a qué mes va la obra y qué se recupera al acelerar.</span></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span class="text-sm text-slate-800"><strong>Evidencia en su Drive:</strong> cada factura con su foto, organizada sola.</span></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span class="text-sm text-slate-800"><strong>Informes descargables</strong> en PDF y Excel cuando los necesite.</span></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span class="text-sm text-slate-800"><strong>Planoteca digital:</strong> sus planos por disciplina, consultables desde obra.</span></div>
+                    <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span class="text-sm text-slate-800"><strong>Contrato NDA</strong> y sus datos 100% suyos, sin secuestro de información.</span></div>
+                </div>
+            </div>
+
+            <!-- DESCUENTOS -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
+                <div class="glass-panel rounded-2xl border border-emerald-200 p-6 flex items-start gap-4" style="background:rgba(16,185,129,.04)">
+                    <i class="fa-solid fa-layer-group text-emerald-500 text-2xl mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-1">Segunda obra en adelante: 15% menos</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Su equipo ya sabe usar el sistema y la configuración está hecha. Ese ahorro se lo trasladamos.</p>
+                    </div>
+                </div>
+                <div class="glass-panel rounded-2xl border border-emerald-200 p-6 flex items-start gap-4" style="background:rgba(16,185,129,.04)">
+                    <i class="fa-solid fa-hand-holding-dollar text-emerald-500 text-2xl mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-1">Pago de la obra completa: 15% menos</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Una obra de 8 meses pasa de $6.800.000 a $5.780.000. Entra de una vez a sus costos indirectos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANCLA DE VALOR + CTA -->
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-slate-700 text-base font-medium leading-relaxed mb-2">
+                    Para una obra de $1.200 millones son <strong>$850.000 al mes</strong>, o
+                    <strong>$28.000 al día</strong>.
+                </p>
+                <p class="text-slate-600 text-sm mb-8">
+                    Un solo día de obra detenida, o de formaleta alquilada sin usar, cuesta varias veces eso.
+                </p>
+                <a href="https://wa.me/573012699885?text=Hola,%20quiero%20cotizar%20SICO%20para%20mi%20obra." target="_blank"
+                   class="inline-block px-10 py-4 rounded-xl amber-gradient text-white font-black text-sm hover:scale-105 transition-transform shadow-lg shadow-amber-500/30">
+                    Cotizar para mi obra
+                </a>
+                <p class="text-xs text-slate-500 mt-4 font-medium">Prueba de 15 días en una obra, sin compromiso.</p>
+            </div>
+
         </div>
     </section>
 
@@ -1244,8 +1257,10 @@
         // 3. Los negativos ya no se muestran con un "+" delante. Antes una
         //    obra de $10M a 36 meses mostraba literalmente "+$-8500k".
         //
-        // 4. El plan sugerido usa umbrales continuos y coherentes con la
-        //    sección de planes (el Plan Básico son 2 módulos, no 1).
+        // 4. Se eliminaron los tres planes escalonados. SICO es un solo plan
+        //    con todos los módulos: lo único que cambia es la mensualidad
+        //    según el tamaño de la obra. Limitar módulos limitaba los datos,
+        //    que son justamente lo que hace valioso al producto.
         // =====================================================================
 
         // Fracción de la fuga que el control documental puede efectivamente
@@ -1282,17 +1297,19 @@
             const recuperaMinM = fugaMinM * TASA_RECUPERACION_MIN;
             const recuperaMaxM = fugaMaxM * TASA_RECUPERACION_MAX;
 
-            // Plan sugerido según escala de obra.
+            // Tarifa según el tamaño de la obra. Un solo plan con todo
+            // incluido: lo único que cambia es el presupuesto administrado.
+            // Debe coincidir con la tabla de la sección de planes.
             let monthlyFee, planName;
-            if (budgetM < 300) {
-                monthlyFee = 250000;
-                planName = 'Plan Básico (2 módulos)';
-            } else if (budgetM <= 1500) {
-                monthlyFee = 750000;
-                planName = 'Plan Medio (4 módulos)';
+            if (budgetM <= 800) {
+                monthlyFee = 450000;
+                planName = 'Obra hasta $800M';
+            } else if (budgetM <= 2500) {
+                monthlyFee = 850000;
+                planName = 'Obra de $800M a $2.500M';
             } else {
-                monthlyFee = 1800000;
-                planName = 'Plan Pro (6 módulos)';
+                monthlyFee = 1500000;
+                planName = 'Obra desde $2.500M';
             }
 
             const totalInvM = (monthlyFee * months) / 1000000;
