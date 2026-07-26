@@ -391,17 +391,17 @@
                         <!-- Métrica 2: Inversión SICO (Ámbar) -->
                         <div class="bg-amber-50 p-4 sm:p-5 rounded-2xl border border-amber-200 flex justify-between items-center transition-all">
                             <div>
-                                <span class="text-[10px] font-black text-amber-700 uppercase tracking-widest block mb-0.5">Inversión SICO en el Proyecto</span>
-                                <span class="text-xs text-slate-600 font-medium">Costo total durante la obra</span>
+                                <span class="text-[10px] font-black text-amber-700 uppercase tracking-widest block mb-0.5">Inversión en SICO</span>
+                                <span class="text-xs text-slate-600 font-medium">Se cotiza según el tamaño y la duración de su obra</span>
                             </div>
-                            <span id="calcCostVal" class="text-sm sm:text-lg font-black text-amber-600 font-mono">Obra de $800M a $2.500M · $6.8M COP</span>
+                            <span id="calcCostVal" class="text-sm sm:text-base font-black text-amber-600">Cotización a medida</span>
                         </div>
 
                         <!-- Métrica 3: Resultado neto (conservador a optimista) -->
                         <div class="bg-emerald-50 p-4 sm:p-5 rounded-2xl border border-emerald-200 flex justify-between items-center transition-all">
                             <div>
-                                <span class="text-[10px] font-black text-emerald-700 uppercase tracking-widest block mb-0.5">Resultado Neto Estimado</span>
-                                <span class="text-xs text-emerald-700 font-medium">Recuperado menos inversión · escenario conservador a optimista</span>
+                                <span class="text-[10px] font-black text-emerald-700 uppercase tracking-widest block mb-0.5">Lo que el control puede recuperar</span>
+                                <span class="text-xs text-emerald-700 font-medium">Escenario conservador a optimista, antes de la inversión</span>
                             </div>
                             <span id="calcNetVal" class="text-xl sm:text-3xl font-black text-emerald-600 font-mono">$10.5M a $74.3M</span>
                         </div>
@@ -963,7 +963,7 @@
             <div class="text-center max-w-3xl mx-auto mb-14">
                 <h2 class="text-xs font-black text-sico-accent tracking-widest uppercase mb-3">Un solo plan</h2>
                 <p class="text-3xl sm:text-5xl font-black text-slate-900">
-                    Todo incluido.<br class="hidden sm:block">Paga según el tamaño de su obra.
+                    Todo incluido.<br class="hidden sm:block">Cotizado para su obra.
                 </p>
                 <p class="text-sico-textMuted text-base mt-5 font-medium leading-relaxed">
                     No hay versiones recortadas. El valor de SICO está en los datos, y limitar módulos
@@ -972,41 +972,40 @@
                 </p>
             </div>
 
-            <!-- TABLA DE PRECIOS POR TAMAÑO DE OBRA -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-14">
-
-                <div class="glass-panel p-8 rounded-3xl border border-slate-200 text-center flex flex-col">
-                    <span class="text-[11px] font-black text-slate-500 uppercase tracking-widest">Obra hasta</span>
-                    <div class="text-2xl font-black text-slate-900 mt-1 mb-5">$800 millones</div>
-                    <div class="border-t border-slate-200 pt-5 mt-auto">
-                        <div class="flex items-end justify-center gap-1">
-                            <span class="text-4xl font-black text-slate-900">$450.000</span>
+            <!-- CALIFICACIÓN, SIN PRECIO PÚBLICO -->
+            <div class="max-w-3xl mx-auto mb-14">
+                <div class="glass-panel rounded-3xl border-2 border-sico-accent p-8 sm:p-10 text-center shadow-[0_0_40px_rgba(245,158,11,.14)]">
+                    <span class="bg-amber-500/10 text-amber-700 border border-amber-500/40 text-[11px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">
+                        Cotización por obra
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mt-5 mb-4">
+                        Cada obra se cotiza aparte.
+                    </h3>
+                    <p class="text-slate-600 text-base font-medium leading-relaxed mb-6">
+                        No cobramos lo mismo por una remodelación que por un edificio, porque no le
+                        entregamos lo mismo. La tarifa depende del presupuesto que esté administrando,
+                        cuánto le falta a la obra y cuánta gente va a reportar en campo.
+                    </p>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-7 text-left">
+                        <p class="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">Lo que miramos para cotizar</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5">
+                            <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
+                                <span class="text-sm text-slate-700">Presupuesto y duración de la obra</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
+                                <span class="text-sm text-slate-700">Cuántas personas reportan en campo</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
+                                <span class="text-sm text-slate-700">Qué módulos necesita activar</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
+                                <span class="text-sm text-slate-700">Cómo tiene hoy su presupuesto</span></div>
                         </div>
-                        <span class="text-xs text-slate-500 font-bold">COP al mes por obra</span>
                     </div>
-                </div>
-
-                <div class="glass-panel p-8 rounded-3xl border-2 border-sico-accent text-center flex flex-col relative shadow-[0_0_36px_rgba(245,158,11,.16)] md:-translate-y-3">
-                    <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 amber-gradient text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">El más común</span>
-                    <span class="text-[11px] font-black text-amber-700 uppercase tracking-widest mt-2">Obra entre</span>
-                    <div class="text-2xl font-black text-slate-900 mt-1 mb-5">$800M y $2.500M</div>
-                    <div class="border-t border-amber-200 pt-5 mt-auto">
-                        <div class="flex items-end justify-center gap-1">
-                            <span class="text-4xl font-black text-slate-900">$850.000</span>
-                        </div>
-                        <span class="text-xs text-slate-500 font-bold">COP al mes por obra</span>
-                    </div>
-                </div>
-
-                <div class="glass-panel p-8 rounded-3xl border border-slate-200 text-center flex flex-col">
-                    <span class="text-[11px] font-black text-slate-500 uppercase tracking-widest">Obra desde</span>
-                    <div class="text-2xl font-black text-slate-900 mt-1 mb-5">$2.500 millones</div>
-                    <div class="border-t border-slate-200 pt-5 mt-auto">
-                        <div class="flex items-end justify-center gap-1">
-                            <span class="text-4xl font-black text-slate-900">$1.500.000</span>
-                        </div>
-                        <span class="text-xs text-slate-500 font-bold">COP al mes por obra</span>
-                    </div>
+                    <a href="https://wa.me/573012699885?text=Hola,%20quiero%20cotizar%20SICO%20para%20mi%20obra." target="_blank"
+                       class="inline-block px-10 py-4 rounded-xl amber-gradient text-white font-black text-sm hover:scale-105 transition-transform shadow-lg shadow-amber-500/30">
+                        Pedir cotización para mi obra
+                    </a>
+                    <p class="text-xs text-slate-500 mt-4 font-medium">
+                        Trabajamos con obras desde $200 millones. Respuesta el mismo día.
+                    </p>
                 </div>
             </div>
 
@@ -1052,25 +1051,19 @@
                     <i class="fa-solid fa-hand-holding-dollar text-emerald-500 text-2xl mt-1"></i>
                     <div>
                         <h4 class="font-bold text-slate-900 text-sm mb-1">Pago de la obra completa: 15% menos</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">Una obra de 8 meses pasa de $6.800.000 a $5.780.000. Entra de una vez a sus costos indirectos.</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">Si prefiere dejarlo cubierto desde el inicio dentro de sus costos indirectos, en vez de pagarlo mes a mes.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- ANCLA DE VALOR + CTA -->
             <div class="max-w-3xl mx-auto text-center">
                 <p class="text-slate-700 text-base font-medium leading-relaxed mb-2">
-                    Para una obra de $1.200 millones son <strong>$850.000 al mes</strong>, o
-                    <strong>$28.000 al día</strong>.
+                    En una obra promedio, SICO cuesta menos de lo que se pierde en un solo día
+                    de equipo alquilado parado.
                 </p>
-                <p class="text-slate-600 text-sm mb-8">
-                    Un solo día de obra detenida, o de formaleta alquilada sin usar, cuesta varias veces eso.
+                <p class="text-slate-600 text-sm">
+                    En la reunión le mostramos ese cálculo con los números de su obra, no con los de otra.
                 </p>
-                <a href="https://wa.me/573012699885?text=Hola,%20quiero%20cotizar%20SICO%20para%20mi%20obra." target="_blank"
-                   class="inline-block px-10 py-4 rounded-xl amber-gradient text-white font-black text-sm hover:scale-105 transition-transform shadow-lg shadow-amber-500/30">
-                    Cotizar para mi obra
-                </a>
-                <p class="text-xs text-slate-500 mt-4 font-medium">Prueba de 15 días en una obra, sin compromiso.</p>
             </div>
 
         </div>
@@ -1297,67 +1290,21 @@
             const recuperaMinM = fugaMinM * TASA_RECUPERACION_MIN;
             const recuperaMaxM = fugaMaxM * TASA_RECUPERACION_MAX;
 
-            // Tarifa según el tamaño de la obra. Un solo plan con todo
-            // incluido: lo único que cambia es el presupuesto administrado.
-            // Debe coincidir con la tabla de la sección de planes.
-            let monthlyFee, planName;
-            if (budgetM <= 800) {
-                monthlyFee = 450000;
-                planName = 'Obra hasta $800M';
-            } else if (budgetM <= 2500) {
-                monthlyFee = 850000;
-                planName = 'Obra de $800M a $2.500M';
-            } else {
-                monthlyFee = 1500000;
-                planName = 'Obra desde $2.500M';
-            }
-
-            const totalInvM = (monthlyFee * months) / 1000000;
-
-            const netoMinM = recuperaMinM - totalInvM;
-            const netoMaxM = recuperaMaxM - totalInvM;
+            // La tarifa NO se publica: cada obra se cotiza según su tamaño,
+            // duración, personas reportando en campo y estado del presupuesto.
+            // La calculadora dimensiona el problema, no vende un precio.
 
             document.getElementById('calcLossVal').innerText =
                 '-' + formatoMillones(fugaMinM) + ' a -' + formatoMillones(fugaMaxM);
 
-            document.getElementById('calcCostVal').innerText =
-                planName + ' · ' + formatoMillones(totalInvM) + ' COP';
+            document.getElementById('calcCostVal').innerText = 'Cotización a medida';
 
-            // Escenario conservador y optimista, con su signo real.
             document.getElementById('calcNetVal').innerText =
-                formatoMillones(netoMinM) + ' a ' + formatoMillones(netoMaxM);
+                formatoMillones(recuperaMinM) + ' a ' + formatoMillones(recuperaMaxM);
 
-            // Punto de equilibrio: cuántos meses de operación se necesitan
-            // para que lo recuperado iguale lo invertido, en el escenario
-            // conservador. Sin topes artificiales.
-            const recuperadoPorMesM = recuperaMinM / months;
-            const cuotaMensualM = monthlyFee / 1000000;
-
-            const leyenda = document.getElementById('calcPaybackVal');
-
-            if (recuperadoPorMesM <= 0) {
-                leyenda.innerHTML = 'Ajuste el presupuesto para estimar el punto de equilibrio.';
-                return;
-            }
-
-            const mesesEquilibrio = cuotaMensualM / recuperadoPorMesM;
-
-            if (mesesEquilibrio <= months) {
-                const diasEquilibrio = Math.max(1, Math.round(mesesEquilibrio * 30));
-                if (diasEquilibrio <= 60) {
-                    leyenda.innerHTML =
-                        'En el escenario conservador, SICO cubre su costo en aproximadamente <strong>' +
-                        diasEquilibrio + ' días</strong> de operación.';
-                } else {
-                    leyenda.innerHTML =
-                        'En el escenario conservador, SICO cubre su costo en aproximadamente <strong>' +
-                        mesesEquilibrio.toFixed(1) + ' meses</strong> de operación.';
-                }
-            } else {
-                leyenda.innerHTML =
-                    'En una obra de esta escala, el retorno es marginal. ' +
-                    '<strong>Hablemos antes de contratar:</strong> puede que un plan menor le sirva mejor.';
-            }
+            document.getElementById('calcPaybackVal').innerHTML =
+                'En una obra de esta escala, SICO cuesta una fracción de esa cifra. ' +
+                '<strong>Le pasamos el número exacto de su obra en la cotización.</strong>';
         }
 
         // Ejecutar cálculo inicial al cargar
