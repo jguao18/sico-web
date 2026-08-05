@@ -285,18 +285,28 @@
                         </div>
 
                         <div class="space-y-4 mb-6">
+                            <!-- Las cifras salen de la misma cuenta que la calculadora de abajo:
+                                 fuga del 5% al 15% del presupuesto, de la cual es recuperable
+                                 entre el 20% y el 35%. Es decir, del 1% al 5% del presupuesto.
+                                 Antes esta tarjeta prometia el 5% al 10%, que es la fuga completa
+                                 y no lo que el control documental recupera. Si cambia
+                                 TASA_RECUPERACION en el script, hay que cambiar estos numeros. -->
                             <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-slate-700">
                                 <span class="font-bold text-emerald-700 block mb-1">🏗️ Obra de $300 Millones COP:</span>
-                                Ahorro estimado de <strong>$15M a $30M COP</strong> (Inversión SICO Básico $250k/mes).
+                                Recupera entre <strong>$3M y $15M COP</strong> con evidencia fotográfica y registro diario.
                             </div>
                             <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-slate-700">
                                 <span class="font-bold text-emerald-700 block mb-1">🏢 Obra de $1.500 Millones COP:</span>
-                                Ahorro estimado de <strong>$75M a $150M COP</strong> (Inversión SICO Medio $750k/mes).
+                                Recupera entre <strong>$15M y $78M COP</strong> con evidencia fotográfica y registro diario.
                             </div>
                             <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-slate-700">
-                                <span class="font-bold text-emerald-700 block mb-1">🌆 Obra de $5.000 Millones COP:</span>
-                                Ahorro estimado de <strong>+$250 Millones COP</strong> (Inversión SICO Pro $1.8M/mes).
+                                <span class="font-bold text-emerald-700 block mb-1">🌆 Obra de $3.000 Millones COP:</span>
+                                Recupera entre <strong>$30M y $157M COP</strong> con evidencia fotográfica y registro diario.
                             </div>
+                            <p class="text-[11px] text-slate-500 leading-relaxed px-1">
+                                La mensualidad no aparece aquí a propósito: se cotiza según el tamaño y la
+                                duración de su obra. Los valores de referencia están en la sección de precios.
+                            </p>
                         </div>
                     </div>
 
@@ -376,7 +386,16 @@
                                 <span class="text-[10px] font-black text-emerald-700 uppercase tracking-widest block mb-0.5">Lo que el control puede recuperar</span>
                                 <span class="text-xs text-emerald-700 font-medium">Escenario conservador a optimista, antes de la inversión</span>
                             </div>
-                            <span id="calcNetVal" class="text-xl sm:text-3xl font-black text-emerald-600 font-mono">$10.5M a $74.3M</span>
+                            <span id="calcNetVal" class="text-xl sm:text-3xl font-black text-emerald-600 font-mono">$15M a $78.8M</span>
+                        </div>
+
+                        <!-- Reparto por mes. Es lo que le da funcion al slider de duracion:
+                             el total recuperado no depende de cuanto dure la obra, pero el
+                             ritmo si. Esta es la cifra que se compara de frente con la
+                             mensualidad en la reunion. -->
+                        <div class="flex justify-between items-center gap-3 pt-3 mt-3 border-t border-emerald-200">
+                            <span class="text-[11px] text-slate-600 font-medium leading-snug">Repartido en la duración que eligió</span>
+                            <span id="calcPerMonthVal" class="text-sm sm:text-lg font-black text-emerald-700 font-mono whitespace-nowrap">$2.5M a $13.1M por mes</span>
                         </div>
 
                         <!-- Banner de punto de equilibrio -->
@@ -1301,6 +1320,15 @@
 
             document.getElementById('calcNetVal').innerText =
                 formatoMillones(recuperaMinM) + ' a ' + formatoMillones(recuperaMaxM);
+
+            // El total recuperado no depende de la duracion: la fuga del 5% al 15% es
+            // una proporcion del presupuesto, no del calendario. Lo que si cambia con
+            // la duracion es el ritmo. Repartirlo por mes es lo unico honesto que
+            // puede hacer el slider de meses, y ademas deja la cifra en la misma
+            // unidad que la mensualidad, que es la comparacion que importa.
+            document.getElementById('calcPerMonthVal').innerText =
+                formatoMillones(recuperaMinM / months) + ' a ' +
+                formatoMillones(recuperaMaxM / months) + ' por mes';
 
             document.getElementById('calcPaybackVal').innerHTML =
                 'En una obra de esta escala, SICO cuesta una fracción de esa cifra. ' +
