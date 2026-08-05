@@ -240,7 +240,11 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-stretch">
                 <!-- Tarjeta 1: PÉRDIDAS INVISIBLES EN CUALQUIER PROYECTO -->
                 <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-xl relative flex flex-col justify-between">
-                    <div>
+                    <!-- flex-1 en el cuerpo y justify-between en la lista: si una tarjeta
+                         queda mas corta que la otra, las filas se reparten el espacio
+                         sobrante en vez de amontonarse arriba y dejar un hueco blanco
+                         antes del pie. Asi no importa cual de las dos tenga mas contenido. -->
+                    <div class="flex-1 flex flex-col">
                         <div class="flex justify-between items-center mb-6">
                             <span class="bg-rose-50 text-rose-700 border border-rose-200 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
                                 ❌ Fugas Típicas del Sector (5% a 15%)
@@ -248,7 +252,7 @@
                             <span class="text-xs text-slate-600 font-mono">Cualquier Escala de Obra</span>
                         </div>
 
-                        <div class="space-y-4 mb-8">
+                        <div class="space-y-4 mb-8 flex-1 flex flex-col justify-between">
                             <div class="flex justify-between items-center p-3.5 bg-slate-50 rounded-xl border border-slate-200 shadow-sm">
                                 <span class="text-xs text-slate-600"><i class="fa-solid fa-boxes-stacked text-rose-600 mr-2"></i> Pérdida y robo "hormiga" de insumos</span>
                                 <span class="text-xs font-bold text-rose-600">2.5% a 5% del Presupuesto</span>
@@ -265,6 +269,15 @@
                                 <span class="text-xs text-slate-600"><i class="fa-solid fa-clock text-rose-600 mr-2"></i> Horas muertas por falta de coordinación</span>
                                 <span class="text-xs font-bold text-rose-600">+50% del tiempo en sitio</span>
                             </div>
+                            <!-- Quinta fuga: cierra el mapa. Cada fuga de esta lista tiene su
+                                 modulo enfrente (insumos-Materiales, maquinaria-Equipos,
+                                 caja menor-Caja Menor, horas muertas-Bitacora). Faltaba la
+                                 que justifica la Planoteca, y ademas emparejaba la altura de
+                                 las dos tarjetas, que dejaba un hueco blanco aqui abajo. -->
+                            <div class="flex justify-between items-center p-3.5 bg-slate-50 rounded-xl border border-slate-200 shadow-sm">
+                                <span class="text-xs text-slate-600"><i class="fa-solid fa-map-location-dot text-rose-600 mr-2"></i> Reprocesos por planos desactualizados en sitio</span>
+                                <span class="text-xs font-bold text-rose-600">Se paga dos veces</span>
+                            </div>
                         </div>
                     </div>
 
@@ -276,7 +289,7 @@
 
                 <!-- Tarjeta 2: RETORNO PROPORCIONAL CON SICO -->
                 <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-xl relative flex flex-col justify-between">
-                    <div>
+                    <div class="flex-1 flex flex-col">
                         <div class="flex justify-between items-center mb-6">
                             <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
                                 ✅ Retorno Directo con SICO
@@ -284,7 +297,7 @@
                             <span class="text-xs text-emerald-400 font-mono font-bold">Respaldo Técnico</span>
                         </div>
 
-                        <div class="space-y-4 mb-6">
+                        <div class="space-y-4 mb-6 flex-1 flex flex-col justify-between">
                             <!-- Las cifras salen de la misma cuenta que la calculadora de abajo:
                                  fuga del 5% al 15% del presupuesto, de la cual es recuperable
                                  entre el 20% y el 35%. Es decir, del 1% al 5% del presupuesto.
@@ -304,8 +317,8 @@
                                 Recupera entre <strong>$30M y $157M COP</strong> con evidencia fotográfica y registro diario.
                             </div>
                             <p class="text-[11px] text-slate-500 leading-relaxed px-1">
-                                La mensualidad no aparece aquí a propósito: se cotiza según el tamaño y la
-                                duración de su obra. Los valores de referencia están en la sección de precios.
+                                La mensualidad no aparece aquí para mantener el foco en lo que se recupera.
+                                El precio exacto de cada obra está en la sección de precios, más abajo.
                             </p>
                         </div>
                     </div>
@@ -332,15 +345,21 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch border-b border-slate-200 pb-10 mb-6">
                     <!-- Controles / Sliders (5 cols) -->
-                    <div class="lg:col-span-6 space-y-8 flex flex-col justify-center bg-white p-6 sm:p-8 rounded-3xl border border-slate-200">
+                    <!-- justify-between y no justify-center: con center los dos sliders
+                         quedaban flotando en la mitad y dejaban aire muerto arriba y abajo,
+                         porque la columna de resultados es mas alta. -->
+                    <div class="lg:col-span-6 space-y-8 flex flex-col justify-between bg-white p-6 sm:p-8 rounded-3xl border border-slate-200">
                         <div>
                             <div class="flex justify-between items-center mb-3">
                                 <label class="text-xs sm:text-sm font-extrabold text-slate-700 uppercase tracking-wide">Presupuesto Estimado:</label>
                                 <span id="calcBudgetVal" class="text-lg sm:text-2xl font-black text-sico-accent font-mono">$1.500 Millones COP</span>
                             </div>
-                            <input type="range" id="calcBudgetRange" min="10" max="10000" step="10" value="1500" oninput="updateROICalc()" class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500 shadow-inner">
+                            <!-- Arranca en 100, no en 10: trabajamos con obras desde $100
+                                 millones, y dejar que el slider bajara a $10M invitaba a
+                                 simular obras que no vamos a tomar. -->
+                            <input type="range" id="calcBudgetRange" min="100" max="10000" step="10" value="1500" oninput="updateROICalc()" class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500 shadow-inner">
                             <div class="flex justify-between text-xs text-slate-600 font-bold mt-2">
-                                <span>$10M COP</span>
+                                <span>$100M COP</span>
                                 <span>$1.500M COP</span>
                                 <span>$10.000M COP</span>
                             </div>
@@ -357,6 +376,19 @@
                                 <span>18 Meses</span>
                                 <span>36 Meses</span>
                             </div>
+                        </div>
+
+                        <!-- Ocupa el aire que quedaba al pie de la columna y responde la
+                             pregunta que el cliente se hace justo aqui: "y esto que tiene
+                             que ver con lo que me van a cobrar". Desde el 6-ago-2026 el
+                             precio es una formula publica que solo depende del presupuesto,
+                             asi que aqui se refuerza eso en vez de listar factores viejos. -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
+                            <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest block mb-2">Con estos dos datos calculamos</span>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                El precio de SICO es <strong>$70.000 al mes por cada $100 millones</strong> del
+                                presupuesto que ingresó arriba. Se calcula igual para todos: no se negocia.
+                            </p>
                         </div>
                     </div>
 
@@ -375,7 +407,7 @@
                         <div class="bg-amber-50 p-4 sm:p-5 rounded-2xl border border-amber-200 flex justify-between items-center transition-all">
                             <div>
                                 <span class="text-[10px] font-black text-amber-700 uppercase tracking-widest block mb-0.5">Inversión en SICO</span>
-                                <span class="text-xs text-slate-600 font-medium">Se cotiza según el tamaño y la duración de su obra</span>
+                                <span class="text-xs text-slate-600 font-medium">$70.000 al mes por cada $100M, según la duración que eligió</span>
                             </div>
                             <span id="calcCostVal" class="text-sm sm:text-base font-black text-amber-600">Cotización a medida</span>
                         </div>
@@ -969,55 +1001,61 @@
                 <div class="glass-panel rounded-3xl border-2 border-sico-accent p-8 sm:p-10 shadow-[0_0_40px_rgba(245,158,11,.14)]">
                     <div class="text-center mb-8">
                         <span class="bg-amber-500/10 text-amber-700 border border-amber-500/40 text-[11px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">
-                            Valores de referencia
+                            El precio se calcula, no se negocia
                         </span>
                         <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mt-5 mb-3">
-                            Cada obra se cotiza aparte.
+                            $70.000 al mes por cada $100 millones de su obra.
                         </h3>
                         <p class="text-slate-600 text-base font-medium leading-relaxed max-w-2xl mx-auto">
-                            No cobramos lo mismo por una remodelación que por un edificio, porque no le
-                            entregamos lo mismo. Estos son órdenes de magnitud para que se haga una idea:
+                            Ni un peso más por ser usted, ni un peso menos por regatear: el precio es
+                            proporcional al tamaño de su obra y se calcula igual para todos. Mínimo
+                            $450.000 al mes. Estos son ejemplos reales de la fórmula:
                         </p>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
                         <div class="bg-slate-50 rounded-2xl border border-slate-200 p-6 text-center">
                             <div class="text-[11px] font-black text-slate-500 uppercase tracking-widest mb-1">Obra de</div>
-                            <div class="text-lg font-black text-slate-900 mb-3">$100 millones</div>
+                            <div class="text-lg font-black text-slate-900 mb-3">$800 millones</div>
                             <div class="border-t border-slate-200 pt-3">
-                                <div class="text-2xl font-black text-slate-900">desde $350.000</div>
-                                <div class="text-xs text-slate-500 font-bold">al mes</div>
+                                <div class="text-2xl font-black text-slate-900">$550.000</div>
+                                <div class="text-xs text-slate-500 font-bold">al mes · $18.300 al día</div>
                             </div>
                         </div>
                         <div class="bg-amber-50 rounded-2xl border-2 border-amber-300 p-6 text-center">
                             <div class="text-[11px] font-black text-amber-700 uppercase tracking-widest mb-1">Obra de</div>
                             <div class="text-lg font-black text-slate-900 mb-3">$1.500 millones</div>
                             <div class="border-t border-amber-200 pt-3">
-                                <div class="text-2xl font-black text-slate-900">desde $750.000</div>
-                                <div class="text-xs text-slate-500 font-bold">al mes</div>
+                                <div class="text-2xl font-black text-slate-900">$1.050.000</div>
+                                <div class="text-xs text-slate-500 font-bold">al mes · $35.000 al día</div>
                             </div>
                         </div>
                         <div class="bg-slate-50 rounded-2xl border border-slate-200 p-6 text-center">
                             <div class="text-[11px] font-black text-slate-500 uppercase tracking-widest mb-1">Obra de</div>
                             <div class="text-lg font-black text-slate-900 mb-3">$3.000 millones</div>
                             <div class="border-t border-slate-200 pt-3">
-                                <div class="text-2xl font-black text-slate-900">desde $1.500.000</div>
-                                <div class="text-xs text-slate-500 font-bold">al mes</div>
+                                <div class="text-2xl font-black text-slate-900">$2.100.000</div>
+                                <div class="text-xs text-slate-500 font-bold">al mes · $70.000 al día</div>
                             </div>
                         </div>
                     </div>
 
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 mb-7 text-center">
+                        <p class="text-sm text-slate-800 font-bold">
+                            En toda la obra, SICO cuesta menos del 1% del presupuesto — y le vigila el 100%.
+                        </p>
+                        <p class="text-xs text-slate-600 mt-1">Una interventoría cobra entre el 3% y el 5%.</p>
+                    </div>
+
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-7">
-                        <p class="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">Lo que ajusta la cotización</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5">
+                        <p class="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">Usted no arranca pagando: arranca viendo</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-2.5">
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
-                                <span class="text-sm text-slate-700">Cuánto le falta a la obra, no cuánto lleva</span></div>
+                                <span class="text-sm text-slate-700">15 días gratis con su obra real, antes de pagar el primer peso</span></div>
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
-                                <span class="text-sm text-slate-700">Cuántas personas van a reportar en campo</span></div>
+                                <span class="text-sm text-slate-700">Primera semana con acompañamiento total, virtual o presencial</span></div>
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
-                                <span class="text-sm text-slate-700">Si ya tiene presupuesto y cronograma</span></div>
-                            <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
-                                <span class="text-sm text-slate-700">Si es su primera obra con nosotros o ya tiene otras</span></div>
+                                <span class="text-sm text-slate-700">Capacitación de su residente en 30 minutos</span></div>
                         </div>
                     </div>
 
@@ -1107,7 +1145,7 @@
                         <i class="fa-solid fa-chevron-down text-sico-accent group-open:rotate-180 transition-transform"></i>
                     </summary>
                     <p class="text-xs sm:text-sm text-slate-600 mt-3 pt-3 border-t border-slate-200 leading-relaxed font-medium">
-                        Está diseñado para que lo opere <strong>cualquier persona encargada en el frente de obra</strong> (maestro de obra, almacenista, residente o auxiliar designado). Incluimos una <strong>capacitación práctica de máximo 1 a 2 días</strong> y <strong>1 semana completa de acompañamiento en vivo garantizado</strong> para asegurar la correcta adopción de su equipo.
+                        Está diseñado para que lo opere <strong>cualquier persona encargada en el frente de obra</strong> (maestro de obra, almacenista, residente o auxiliar designado). La capacitación toma <strong>30 minutos</strong>: su equipo ya sabe usar Telegram, solo le enseñamos el resto. Además incluimos <strong>1 semana completa de acompañamiento en vivo</strong> para asegurar la correcta adopción.
                     </p>
                 </details>
 
@@ -1280,6 +1318,16 @@
         const TASA_RECUPERACION_MIN = 0.20;
         const TASA_RECUPERACION_MAX = 0.35;
 
+        // Fórmula de precio de SICO, decidida el 6-ago-2026 y ya pública en
+        // la sección de precios: $70.000 por cada $100M, mínimo $450.000,
+        // redondeo a $50.000. budgetM viene en millones de pesos.
+        const TARIFA_100M = 70000;
+        const PISO_MENSUAL = 450000;
+        function mensualidadSICO(budgetM) {
+            const bruto = (budgetM / 100) * TARIFA_100M;
+            return Math.max(PISO_MENSUAL, Math.round(bruto / 50000) * 50000);
+        }
+
         function formatoMillones(val) {
             const signo = val < 0 ? '-' : '';
             const abs = Math.abs(val);
@@ -1309,17 +1357,22 @@
             const recuperaMinM = fugaMinM * TASA_RECUPERACION_MIN;
             const recuperaMaxM = fugaMaxM * TASA_RECUPERACION_MAX;
 
-            // La tarifa NO se publica: cada obra se cotiza según su tamaño,
-            // duración, personas reportando en campo y estado del presupuesto.
-            // La calculadora dimensiona el problema, no vende un precio.
+            // La tarifa SÍ se publica desde el 6-ago-2026: el precio se calcula
+            // igual para todos, así que la calculadora puede mostrar el número
+            // real de SICO, no un genérico "cotización a medida".
+            const mensualM = mensualidadSICO(budgetM) / 1e6; // a millones
+            const costoTotalM = mensualM * months;
+            const netoMinM = recuperaMinM - costoTotalM;
+            const netoMaxM = recuperaMaxM - costoTotalM;
 
             document.getElementById('calcLossVal').innerText =
                 '-' + formatoMillones(fugaMinM) + ' a -' + formatoMillones(fugaMaxM);
 
-            document.getElementById('calcCostVal').innerText = 'Cotización a medida';
+            document.getElementById('calcCostVal').innerText =
+                formatoMillones(mensualM) + ' al mes (' + formatoMillones(costoTotalM) + ' en toda la obra)';
 
             document.getElementById('calcNetVal').innerText =
-                formatoMillones(recuperaMinM) + ' a ' + formatoMillones(recuperaMaxM);
+                formatoMillones(netoMinM) + ' a ' + formatoMillones(netoMaxM);
 
             // El total recuperado no depende de la duracion: la fuga del 5% al 15% es
             // una proporcion del presupuesto, no del calendario. Lo que si cambia con
@@ -1328,11 +1381,19 @@
             // unidad que la mensualidad, que es la comparacion que importa.
             document.getElementById('calcPerMonthVal').innerText =
                 formatoMillones(recuperaMinM / months) + ' a ' +
-                formatoMillones(recuperaMaxM / months) + ' por mes';
+                formatoMillones(recuperaMaxM / months) + ' por mes, contra ' +
+                formatoMillones(mensualM) + ' de mensualidad';
 
+            // Punto de equilibrio: cuántos días de fuga recuperada cubren un mes
+            // de mensualidad. Si hasta el escenario conservador cubre la cuota
+            // varias veces, el mensaje lo dice explícito.
+            const vecesMin = mensualM > 0 ? (recuperaMinM / months) / mensualM : 0;
             document.getElementById('calcPaybackVal').innerHTML =
-                'En una obra de esta escala, SICO cuesta una fracción de esa cifra. ' +
-                '<strong>Le pasamos el número exacto de su obra en la cotización.</strong>';
+                vecesMin >= 1
+                    ? 'Incluso en el escenario conservador, lo recuperado cubre <strong>' +
+                      vecesMin.toFixed(1) + ' veces</strong> la mensualidad de SICO.'
+                    : 'En esta escala, la fuga recuperable es menor que la mensualidad: ' +
+                      '<strong>hable con nosotros para validar el caso puntual.</strong>';
         }
 
         // Ejecutar cálculo inicial al cargar
