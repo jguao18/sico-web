@@ -21,53 +21,26 @@
     <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
     <link rel="apple-touch-icon" href="assets/favicon-180.png">
 
-    <!-- Conexión anticipada a los CDN: recorta el tiempo hasta el primer render -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preload" as="image" href="assets/obra_hero.webp" type="image/webp">
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/plus-jakarta-sans-latin-800-normal.woff2" crossorigin>
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        sico: {
-                            bgBase: '#F8FAFC',        /* Slate 50 - Clean crisp light base */
-                            bgSurface: '#FFFFFF',     /* White - Pure card surface */
-                            bgSurfaceHover: '#F1F5F9',/* Slate 100 - Surface hover */
-                            textMain: '#0F172A',      /* Slate 900 - Deep dark text */
-                            textMuted: '#475569',     /* Slate 600 - Secondary text */
-                            border: '#E2E8F0',        /* Slate 200 - Soft clean borders */
-                            accent: '#F59E0B',        /* Amber 500 - Rich construction gold/amber */
-                            accentGlow: '#D97706',    /* Amber 600 - Accent glow */
-                            accentLight: '#FBBF24',   /* Amber 400 - Text highlight */
-                            blueNeon: '#38BDF8'       /* Sky 400 - Professional blue accent */
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- ------------------------------------------------------------------
+         ESTILOS: TODO LOCAL, CERO CDN
+         Antes esto eran tres llamadas externas (cdn.tailwindcss.com, cdnjs y
+         fonts.googleapis.com). El 4 de agosto de 2026 el DNS dejo de resolver
+         cdn.tailwindcss.com y la pagina se mostro sin una sola linea de CSS:
+         todo el contenido apilado a la izquierda. Un sitio comercial no puede
+         depender de que tres servidores ajenos respondan.
+
+         assets/sico.css lleva dentro Tailwind ya compilado, Font Awesome
+         (solo los 44 iconos que usa la pagina) y Plus Jakarta Sans.
+         La configuracion de tema que antes vivia aqui en un <script> ahora
+         esta en assets/tailwind.config.js.
+
+         IMPORTANTE: si agregas clases nuevas de Tailwind al HTML, hay que
+         recompilar. Pasos en assets/COMO-RECOMPILAR.md
+         ------------------------------------------------------------------ -->
+    <link rel="stylesheet" href="assets/sico.css">
     <style>
         body {
             background-color: #F8FAFC;

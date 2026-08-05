@@ -28,7 +28,7 @@
 !index.html
 !assets/
 
-# 3. Dentro de assets, solo imágenes e iconos
+# 3. Dentro de assets, solo imágenes, iconos, la hoja de estilos y las fuentes
 assets/*
 !assets/*.png
 !assets/*.jpg
@@ -36,6 +36,19 @@ assets/*
 !assets/*.webp
 !assets/*.svg
 !assets/*.ico
+
+# La hoja de estilos compilada y sus fuentes. Sin esto la web se publica
+# sin diseño: el index.html las pide y GitHub responde 404.
+!assets/sico.css
+!assets/fonts/
+!assets/fonts/*.woff2
+!assets/webfonts/
+!assets/webfonts/*.woff2
+
+# Cómo regenerar el CSS. Va publicado a propósito: es una nota de dos minutos
+# y evita que dentro de seis meses nadie sepa de dónde salió sico.css
+!assets/COMO-RECOMPILAR.md
+!assets/tailwind.config.js
 
 # ==========================================================
 # QUÉ QUEDA FUERA Y POR QUÉ (referencia rápida)
