@@ -357,11 +357,18 @@
                             <!-- Arranca en 100, no en 10: trabajamos con obras desde $100
                                  millones, y dejar que el slider bajara a $10M invitaba a
                                  simular obras que no vamos a tomar. -->
-                            <input type="range" id="calcBudgetRange" min="100" max="10000" step="10" value="1500" oninput="updateROICalc()" class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500 shadow-inner">
+                            <!-- Arranca en $600M: por debajo de ~$643M la formula toca el
+                                 piso de $450.000 y el precio deja de moverse, lo que hace
+                                 ver el slider roto. Y para en $5.000M, que es donde termina
+                                 la formula: arriba de ahi entra SICO Empresarial, que se
+                                 cotiza sobre el contrato y no se puede simular con un
+                                 deslizador. Dejarlo llegar a $50.000M invitaba a calcular
+                                 un numero que despues no existe. -->
+                            <input type="range" id="calcBudgetRange" min="600" max="5000" step="50" value="1200" oninput="updateROICalc()" class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500 shadow-inner">
                             <div class="flex justify-between text-xs text-slate-600 font-bold mt-2">
-                                <span>$100M COP</span>
-                                <span>$1.500M COP</span>
-                                <span>$10.000M COP</span>
+                                <span>$600M COP</span>
+                                <span>Hasta aquí llega la fórmula</span>
+                                <span>$5.000M COP</span>
                             </div>
                         </div>
 
@@ -384,10 +391,9 @@
                              precio es una formula publica que solo depende del presupuesto,
                              asi que aqui se refuerza eso en vez de listar factores viejos. -->
                         <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
-                            <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest block mb-2">Con estos dos datos calculamos</span>
                             <p class="text-xs text-slate-600 leading-relaxed">
-                                El precio de SICO es <strong>$70.000 al mes por cada $100 millones</strong> del
-                                presupuesto que ingresó arriba. Se calcula igual para todos: no se negocia.
+                                ¿Su obra pasa de <strong>$5.000 millones</strong>? Ahí termina la fórmula y
+                                empieza <a href="#empresarial" class="font-bold text-sico-accent underline decoration-dotted underline-offset-2">SICO Empresarial</a>.
                             </p>
                         </div>
                     </div>
@@ -397,8 +403,8 @@
                         <!-- Métrica 1: Fuga Estimada (Borgoña) -->
                         <div class="bg-rose-50 p-4 sm:p-5 rounded-2xl border border-rose-200 flex justify-between items-center transition-all">
                             <div>
-                                <span class="text-[10px] font-black text-rose-700 uppercase tracking-widest block mb-0.5">Fuga Estimada del Sector (5%-15%)</span>
-                                <span class="text-xs text-slate-600 font-medium">Dinero perdido sin control de obra</span>
+                                <span class="text-[10px] font-black text-rose-700 uppercase tracking-widest block mb-0.5">Fuga Estimada del Sector</span>
+                                <span class="text-xs text-slate-600 font-medium">5%-15% del presupuesto, más el desgaste de cada mes de obra</span>
                             </div>
                             <span id="calcLossVal" class="text-lg sm:text-2xl font-black text-rose-600 font-mono font-extrabold">-$75M a -$225M</span>
                         </div>
@@ -437,9 +443,8 @@
 
                         <!-- Transparencia del modelo -->
                         <p class="text-[11px] text-slate-500 leading-relaxed px-1">
-                            <strong class="text-slate-700">Cómo se calcula:</strong> partimos del rango de fuga documentado
-                            para el sector (5% a 15% del presupuesto) y aplicamos una tasa de recuperación del
-                            <strong>20% al 35%</strong> sobre esa fuga. No asumimos que el software recupera la totalidad
+                            <strong class="text-slate-700">Cómo se calcula:</strong> sobre la fuga estimada aplicamos una tasa
+                            de recuperación del <strong>20% al 35%</strong>. No asumimos que el software recupera la totalidad
                             de la pérdida: SICO aporta trazabilidad y evidencia; las decisiones de compra, negociación y
                             programación siguen siendo suyas. Es una estimación para dimensionar la conversación, no una
                             promesa de rendimiento.
@@ -1084,6 +1089,121 @@
                 </div>
             </div>
 
+            <!-- SICO EMPRESARIAL — el tramo de arriba del techo.
+                 Se nombra y se explica que se cotiza sobre el contrato, sin publicar el
+                 rango de porcentaje ni el valor del pago de arranque: en este tramo el
+                 numero sale de la obra, y publicarlo anclaria la conversacion antes de
+                 tenerla. La calculadora de arriba se queda en $5.000M a proposito. -->
+            <div id="empresarial" class="max-w-4xl mx-auto mb-14">
+                <div class="glass-panel rounded-3xl border-2 border-sico-accent p-8 sm:p-10 shadow-[0_0_40px_rgba(245,158,11,.14)]">
+                    <div class="text-center mb-8">
+                        <span class="bg-amber-500/10 text-amber-700 border border-amber-500/40 text-[11px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">
+                            Obras de más de $5.000 millones
+                        </span>
+                        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mt-5 mb-3">
+                            A esta escala, el descontrol ya no cuesta millones. Cuesta cientos.
+                        </h3>
+                        <p class="text-slate-600 text-base font-medium leading-relaxed max-w-2xl mx-auto">
+                            <strong class="text-slate-900">SICO Empresarial</strong> es el mismo sistema, con
+                            el arranque y la atención que exige una obra de este tamaño. Aquí no hay tarifa de
+                            lista y es a propósito: el precio se calcula como un
+                            <strong class="text-slate-900">porcentaje del valor total de su contrato</strong>,
+                            mirando su obra y no un cuadro de precios.
+                        </p>
+                    </div>
+
+                    <p class="text-center text-xs font-black text-slate-500 uppercase tracking-widest mb-4">Lo que el control puede recuperarle</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-7">
+                        <div class="bg-slate-50 rounded-2xl border border-slate-200 p-6 text-center">
+                            <div class="text-[11px] font-black text-slate-500 uppercase tracking-widest mb-1">Obra de</div>
+                            <div class="text-lg font-black text-slate-900 mb-3">$8.000 millones</div>
+                            <div class="border-t border-slate-200 pt-3">
+                                <div class="text-2xl font-black text-slate-900">$80 a $420</div>
+                                <div class="text-xs text-slate-500 font-bold">millones recuperables</div>
+                            </div>
+                        </div>
+                        <div class="bg-amber-50 rounded-2xl border-2 border-amber-300 p-6 text-center">
+                            <div class="text-[11px] font-black text-amber-700 uppercase tracking-widest mb-1">Obra de</div>
+                            <div class="text-lg font-black text-slate-900 mb-3">$15.000 millones</div>
+                            <div class="border-t border-amber-200 pt-3">
+                                <div class="text-2xl font-black text-slate-900">$150 a $788</div>
+                                <div class="text-xs text-slate-500 font-bold">millones recuperables</div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 rounded-2xl border border-slate-200 p-6 text-center">
+                            <div class="text-[11px] font-black text-slate-500 uppercase tracking-widest mb-1">Obra de</div>
+                            <div class="text-lg font-black text-slate-900 mb-3">$40.000 millones</div>
+                            <div class="border-t border-slate-200 pt-3">
+                                <div class="text-2xl font-black text-slate-900">$400 a $2.100</div>
+                                <div class="text-xs text-slate-500 font-bold">millones recuperables</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-xs text-slate-500 leading-relaxed mb-7">
+                        Mismo método de la calculadora: fuga documentada del sector del 5% al 15% del
+                        presupuesto, con una tasa de recuperación del 20% al 35% sobre esa fuga. Es para
+                        dimensionar la conversación, no una promesa de rendimiento.
+                    </p>
+
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 mb-7 text-center">
+                        <p class="text-sm text-slate-800 font-bold">
+                            Una interventoría le cuesta entre el 3% y el 5% del contrato.
+                            SICO Empresarial es una fracción de eso.
+                        </p>
+                        <p class="text-xs text-slate-600 mt-1">Y controla lo que la interventoría no toca: el almacén, la caja menor y el avance de cada día.</p>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-7">
+                        <p class="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">Qué cambia frente al plan estándar</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                                <span class="text-sm text-slate-800"><strong>Todo lo del plan estándar</strong>, sin recortes: los mismos módulos y el mismo dashboard.</span></div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                                <span class="text-sm text-slate-800"><strong>Revisión técnica previa:</strong> verificamos que el sistema aguante el volumen de datos de su obra.</span></div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                                <span class="text-sm text-slate-800"><strong>Si su obra ya arrancó,</strong> le reconstruimos el histórico de gasto y avance: el tablero no empieza en blanco.</span></div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                                <span class="text-sm text-slate-800"><strong>Capacitación extendida</strong> para su equipo, más allá de los 30 minutos del plan estándar.</span></div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                                <span class="text-sm text-slate-800"><strong>Atención directa</strong> de quien construyó el sistema, no de una mesa de soporte.</span></div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                                <span class="text-sm text-slate-800"><strong>Reporte ejecutivo</strong> para junta o socios, con las cifras de la obra al día.</span></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-5 mb-7 text-center">
+                        <p class="text-sm text-slate-900 font-black">
+                            Tomamos una sola obra de este tramo a la vez.
+                        </p>
+                        <p class="text-xs text-slate-600 mt-1">
+                            No es escasez de vitrina: a esta escala la obra la atiende el fundador en persona.
+                            Repartir esa atención entre varias sería venderle algo que no vamos a poder darle.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-7 text-center">
+                        <p class="text-sm text-slate-800 font-bold">
+                            Se cobra sobre el valor completo de la obra, haya arrancado o no,
+                            y se factura mes a mes durante el plazo que le quede.
+                        </p>
+                        <p class="text-xs text-slate-600 mt-1">
+                            Al firmar entra un pago único de arranque, como el anticipo de movilización de
+                            cualquier contrato de obra. No se repite.
+                        </p>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="https://wa.me/573012699885?text=Hola,%20tengo%20una%20obra%20de%20m%C3%A1s%20de%20%245.000%20millones%20y%20quiero%20cotizar%20SICO%20Empresarial." target="_blank"
+                           class="inline-block px-10 py-4 rounded-xl amber-gradient text-white font-black text-sm hover:scale-105 transition-transform shadow-lg shadow-amber-500/30">
+                            Cotizar mi obra grande
+                        </a>
+                        <p class="text-xs text-slate-500 mt-4 font-medium">
+                            Necesitamos dos datos para darle el número: el valor del contrato y los meses que le faltan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <!-- QUÉ INCLUYE, PARA TODOS -->
             <div class="glass-panel rounded-3xl border border-slate-200 p-8 sm:p-10 max-w-5xl mx-auto mb-10">
                 <h3 class="text-center text-lg font-bold text-slate-900 mb-2">Qué incluye, sin importar el tamaño</h3>
@@ -1323,10 +1443,29 @@
         // redondeo a $50.000. budgetM viene en millones de pesos.
         const TARIFA_100M = 70000;
         const PISO_MENSUAL = 450000;
+
+        // Techo de la formula. Por encima, el documento de precios manda
+        // cotizacion propia: a ese volumen la obra puede exigir infraestructura
+        // paga y el perfil de cliente ideal excluye la obra masiva. La
+        // calculadora deja de dar un numero y abre la conversacion.
+        const TECHO_FORMULA_M = 5000;
+
         function mensualidadSICO(budgetM) {
+            if (budgetM > TECHO_FORMULA_M) return null;
             const bruto = (budgetM / 100) * TARIFA_100M;
             return Math.max(PISO_MENSUAL, Math.round(bruto / 50000) * 50000);
         }
+
+        // Fuga que depende del calendario y no del presupuesto: la administracion
+        // que se sostiene mes a mes y el equipo alquilado que se paga este o no
+        // en uso. Antes el modelo la ignoraba, y por eso una obra larga mostraba
+        // la misma fuga que una corta mientras el costo de SICO si crecia: el
+        // neto conservador se volvia negativo pasados 14 meses.
+        // Calibracion: en la obra de la IPS esa perdida medida ronda el 1,8% del
+        // presupuesto al mes (sobrecosto de administracion mas formaleta
+        // inmovilizada). Aqui se usa una fraccion de eso para no inflar el caso.
+        const FUGA_TIEMPO_MIN_MES = 0.0025;
+        const FUGA_TIEMPO_MAX_MES = 0.0060;
 
         function formatoMillones(val) {
             const signo = val < 0 ? '-' : '';
@@ -1349,9 +1488,15 @@
             document.getElementById('calcBudgetVal').innerText = budgetText;
             document.getElementById('calcMonthsVal').innerText = months + (months === 1 ? ' Mes' : ' Meses');
 
-            // Fuga del sector: 5% a 15% del presupuesto.
-            const fugaMinM = budgetM * 0.05;
-            const fugaMaxM = budgetM * 0.15;
+            // La fuga tiene dos componentes. Uno depende de cuanto se compra y
+            // otro de cuanto dura la obra. Sumarlos es lo que corrige el modelo:
+            // una obra larga fuga mas que una corta del mismo presupuesto.
+            const fugaCompraMinM = budgetM * 0.05;
+            const fugaCompraMaxM = budgetM * 0.15;
+            const fugaTiempoMinM = budgetM * FUGA_TIEMPO_MIN_MES * months;
+            const fugaTiempoMaxM = budgetM * FUGA_TIEMPO_MAX_MES * months;
+            const fugaMinM = fugaCompraMinM + fugaTiempoMinM;
+            const fugaMaxM = fugaCompraMaxM + fugaTiempoMaxM;
 
             // Lo que SICO puede recuperar de esa fuga.
             const recuperaMinM = fugaMinM * TASA_RECUPERACION_MIN;
@@ -1360,7 +1505,9 @@
             // La tarifa SÍ se publica desde el 6-ago-2026: el precio se calcula
             // igual para todos, así que la calculadora puede mostrar el número
             // real de SICO, no un genérico "cotización a medida".
-            const mensualM = mensualidadSICO(budgetM) / 1e6; // a millones
+            const mensualCOP = mensualidadSICO(budgetM);
+            const sobreTecho = mensualCOP === null;
+            const mensualM = sobreTecho ? 0 : mensualCOP / 1e6; // a millones
             const costoTotalM = mensualM * months;
             const netoMinM = recuperaMinM - costoTotalM;
             const netoMaxM = recuperaMaxM - costoTotalM;
@@ -1368,28 +1515,36 @@
             document.getElementById('calcLossVal').innerText =
                 '-' + formatoMillones(fugaMinM) + ' a -' + formatoMillones(fugaMaxM);
 
-            document.getElementById('calcCostVal').innerText =
-                formatoMillones(mensualM) + ' al mes (' + formatoMillones(costoTotalM) + ' en toda la obra)';
+            // Pasado el techo no se inventa una cifra: la formula deja de aplicar
+            // y lo que se ofrece es una conversacion, no un precio de lista.
+            document.getElementById('calcCostVal').innerText = sobreTecho
+                ? 'Cotización propia'
+                : formatoMillones(mensualM) + ' al mes (' + formatoMillones(costoTotalM) + ' en toda la obra)';
 
-            document.getElementById('calcNetVal').innerText =
-                formatoMillones(netoMinM) + ' a ' + formatoMillones(netoMaxM);
+            document.getElementById('calcNetVal').innerText = sobreTecho
+                ? formatoMillones(recuperaMinM) + ' a ' + formatoMillones(recuperaMaxM)
+                : formatoMillones(netoMinM) + ' a ' + formatoMillones(netoMaxM);
 
             // El total recuperado no depende de la duracion: la fuga del 5% al 15% es
             // una proporcion del presupuesto, no del calendario. Lo que si cambia con
             // la duracion es el ritmo. Repartirlo por mes es lo unico honesto que
             // puede hacer el slider de meses, y ademas deja la cifra en la misma
             // unidad que la mensualidad, que es la comparacion que importa.
-            document.getElementById('calcPerMonthVal').innerText =
-                formatoMillones(recuperaMinM / months) + ' a ' +
-                formatoMillones(recuperaMaxM / months) + ' por mes, contra ' +
-                formatoMillones(mensualM) + ' de mensualidad';
+            document.getElementById('calcPerMonthVal').innerText = sobreTecho
+                ? formatoMillones(recuperaMinM / months) + ' a ' +
+                  formatoMillones(recuperaMaxM / months) + ' por mes de obra'
+                : formatoMillones(recuperaMinM / months) + ' a ' +
+                  formatoMillones(recuperaMaxM / months) + ' por mes, contra ' +
+                  formatoMillones(mensualM) + ' de mensualidad';
 
             // Punto de equilibrio: cuántos días de fuga recuperada cubren un mes
             // de mensualidad. Si hasta el escenario conservador cubre la cuota
             // varias veces, el mensaje lo dice explícito.
             const vecesMin = mensualM > 0 ? (recuperaMinM / months) / mensualM : 0;
-            document.getElementById('calcPaybackVal').innerHTML =
-                vecesMin >= 1
+            document.getElementById('calcPaybackVal').innerHTML = sobreTecho
+                ? 'Por encima de $5.000 millones la tarifa no se aplica en automático: ' +
+                  '<strong>a esta escala la cotización se arma sobre su obra.</strong>'
+                : vecesMin >= 1
                     ? 'Incluso en el escenario conservador, lo recuperado cubre <strong>' +
                       vecesMin.toFixed(1) + ' veces</strong> la mensualidad de SICO.'
                     : 'En esta escala, la fuga recuperable es menor que la mensualidad: ' +
