@@ -152,12 +152,13 @@
                 <a href="#ahorro" class="hover:text-sico-accent transition-colors">Retorno / Ahorro <i class="fa-solid fa-calculator text-sico-accent text-[10px] ml-1"></i></a>
                 <a href="#simulador" class="hover:text-sico-accent transition-colors">Simulador</a>
                 <a href="#resumenes" class="hover:text-sico-accent transition-colors">Dashboard & Planoteca</a>
+                <a href="#avance" class="hover:text-sico-accent transition-colors">Avance de Obra</a>
                 <a href="#faq" class="hover:text-sico-accent transition-colors">Preguntas Frecuentes</a>
                 <a href="#planes" class="hover:text-sico-accent transition-colors">Planes y Tarifas</a>
             </div>
-            <a href="https://wa.me/573012699885?text=Hola,%20me%20interesa%20solicitar%20una%20prueba%20de%2015%20d%C3%ADas%20gratis%20de%20SICO%20para%20mi%20obra." target="_blank" class="amber-gradient text-white font-bold px-5 py-2.5 rounded-xl hover:scale-105 transition-all text-sm shadow-lg shadow-amber-600/30 flex items-center gap-2">
+            <a href="https://wa.me/573012699885?text=Hola,%20quiero%20que%20corran%20una%20obra%20m%C3%ADa%20en%20SICO%20y%20me%20muestren%20qu%C3%A9%20encuentran." target="_blank" class="amber-gradient text-white font-bold px-5 py-2.5 rounded-xl hover:scale-105 transition-all text-sm shadow-lg shadow-amber-600/30 flex items-center gap-2">
                 <i class="fa-brands fa-whatsapp text-lg"></i>
-                <span class="hidden sm:inline">Prueba 15 Días Gratis</span>
+                <span class="hidden sm:inline">Que me corran una obra</span>
                 <span class="sm:hidden">Probar SICO</span>
             </a>
         </div>
@@ -459,7 +460,7 @@
     <section id="simulador" class="py-24 relative border-t border-sico-border bg-sico-bgBase">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-black text-sico-accent tracking-widest uppercase mb-3">Los cuatro módulos</h2>
+                <h2 class="text-xs font-black text-sico-accent tracking-widest uppercase mb-3">Los módulos de campo</h2>
                 <p class="text-3xl sm:text-5xl font-black text-slate-900 leading-tight">
                     El fin de los formatos en papel.
                 </p>
@@ -576,7 +577,7 @@
 
                     <div id="telegramChat" class="telegram-chat flex-1 bg-slate-50 p-4 overflow-y-auto space-y-4 text-[13px] relative z-10" style="background-image: radial-gradient(rgba(15,23,42,0.03) 1px, transparent 1px); background-size: 10px 10px;">
                         <div class="bg-white p-3 rounded-2xl rounded-tl-none max-w-[85%] text-slate-800 border border-slate-200 shadow-sm">
-                            <p class="font-bold text-sico-accent text-[11px] mb-1">🏗️ SICO Obras v2.4</p>
+                            <p class="font-bold text-sico-accent text-[11px] mb-1">🏗️ SICO Obras</p>
                             <p>Bienvenido al panel de control de obra. Selecciona el módulo con el que deseas trabajar hoy:</p>
                         </div>
                     </div>
@@ -657,6 +658,90 @@
                                     <p class="text-[10px] text-slate-600 mt-1">Visualizador de planos PDF en alta resolución.</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AVANCE CONTRA CRONOGRAMA -->
+    <!-- Agregado el 2-oct-2026. Es lo primero que pregunta un dueño de obra y
+         la pagina no lo decia en ninguna parte. Las cifras son de la obra de
+         ejemplo de esta pagina, no de un cliente. -->
+    <section id="avance" class="py-24 bg-sico-bgBase border-t border-sico-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-black text-sico-accent tracking-widest uppercase mb-3">La pregunta que manda</h2>
+                <p class="text-3xl sm:text-5xl font-black text-slate-900 leading-tight">
+                    ¿Mi obra va bien o va mal?
+                </p>
+                <p class="text-slate-600 text-base sm:text-lg mt-4 font-medium">
+                    No contra una sensación: contra el cronograma que usted firmó.
+                    SICO compara lo ejecutado con lo programado y le dice en qué fecha
+                    termina la obra si sigue al ritmo de hoy.
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto">
+                <div class="glass-panel rounded-3xl border border-sico-border p-8 sm:p-10">
+                    <p class="text-xs font-black text-slate-500 uppercase tracking-widest mb-6">
+                        Ejemplo · obra de $1.200 millones
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+                        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+                            <p class="text-xs font-black text-slate-500 uppercase tracking-wider mb-1">Ejecutado a hoy</p>
+                            <p class="text-3xl font-black text-amber-600">38,1%</p>
+                            <p class="text-xs text-slate-600 mt-1">$445 M de obra hecha</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+                            <p class="text-xs font-black text-slate-500 uppercase tracking-wider mb-1">Debía llevar</p>
+                            <p class="text-3xl font-black text-slate-900">56,5%</p>
+                            <p class="text-xs text-slate-600 mt-1">según el cronograma firmado</p>
+                        </div>
+                        <div class="bg-white border border-rose-200 rounded-2xl p-5">
+                            <p class="text-xs font-black text-slate-500 uppercase tracking-wider mb-1">Atraso</p>
+                            <p class="text-3xl font-black text-rose-600">$215 M</p>
+                            <p class="text-xs text-slate-600 mt-1">obra que ya debería estar hecha</p>
+                        </div>
+                        <div class="bg-white border border-rose-200 rounded-2xl p-5">
+                            <p class="text-xs font-black text-slate-500 uppercase tracking-wider mb-1">Entrega proyectada</p>
+                            <p class="text-2xl font-black text-rose-600">21 abr 2027</p>
+                            <p class="text-xs text-slate-600 mt-1">pactada 24 oct 2026 · 179 días después</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 mb-8">
+                        <p class="text-xs font-black text-slate-500 uppercase tracking-widest mb-4">Tres caminos desde hoy</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                            <div>
+                                <p class="text-sm font-black text-rose-600 mb-1">Si todo sigue igual</p>
+                                <p class="text-xs text-slate-700">Al ritmo de los últimos tres meses, 179 días tarde.</p>
+                            </div>
+                            <div>
+                                <p class="text-sm font-black text-amber-600 mb-1">Si repite su mejor mes</p>
+                                <p class="text-xs text-slate-700">138 días tarde. No es una meta teórica: es repetir lo que la obra ya hizo.</p>
+                            </div>
+                            <div>
+                                <p class="text-sm font-black text-emerald-600 mb-1">Para cumplir el contrato</p>
+                                <p class="text-xs text-slate-700">Cuánto habría que multiplicar la producción en los meses que quedan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-chart-line text-sico-accent mt-1"></i>
+                            <p class="text-sm text-slate-800"><strong>Capítulo por capítulo:</strong> dónde se está abriendo la brecha, no solo cuánta hay.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-calendar-check text-sico-accent mt-1"></i>
+                            <p class="text-sm text-slate-800"><strong>Actividades vencidas:</strong> las que pasaron su fecha de fin y siguen abiertas.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-shield-halved text-sico-accent mt-1"></i>
+                            <p class="text-sm text-slate-800"><strong>Cada cifra dice de dónde sale.</strong> Lo que nadie registró aparece como sin dato, nunca como cero.</p>
                         </div>
                     </div>
                 </div>
@@ -1053,12 +1138,14 @@
                     </div>
 
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-7">
-                        <p class="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">Usted no arranca pagando: arranca viendo</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-2.5">
+                        <p class="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">El riesgo lo ponemos nosotros</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5">
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
-                                <span class="text-sm text-slate-700">15 días gratis con su obra real, antes de pagar el primer peso</span></div>
+                                <span class="text-sm text-slate-700"><strong>Garantía del primer mes:</strong> si al cierre del primer mes no le sirvió, le devolvemos la mensualidad completa. Sin que tenga que justificar nada.</span></div>
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
-                                <span class="text-sm text-slate-700">Primera semana con acompañamiento total, virtual o presencial</span></div>
+                                <span class="text-sm text-slate-700"><strong>Montaje: $300.000</strong>, una sola vez. Incluye cargar su presupuesto, cronograma y APU, y el histórico si la obra ya arrancó.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
+                                <span class="text-sm text-slate-700">Primera semana de seguimiento, virtual o presencial</span></div>
                             <div class="flex items-start gap-2.5"><i class="fa-solid fa-circle text-[5px] text-sico-accent mt-2"></i>
                                 <span class="text-sm text-slate-700">Capacitación de su residente en 30 minutos</span></div>
                         </div>
@@ -1072,7 +1159,7 @@
                         </div>
                         <div class="flex items-start gap-3 bg-emerald-50 border border-emerald-200 rounded-xl p-4">
                             <i class="fa-solid fa-hand-holding-dollar text-emerald-600 text-xl mt-0.5"></i>
-                            <div><h4 class="font-bold text-slate-900 text-sm mb-1">Pago de la obra completa: 15% menos</h4>
+                            <div><h4 class="font-bold text-slate-900 text-sm mb-1">Pago de la obra completa: un mes sin costo</h4>
                             <p class="text-xs text-slate-600 leading-relaxed">Si prefiere dejarlo cubierto desde el inicio dentro de sus costos indirectos, en vez de pagarlo mes a mes.</p></div>
                         </div>
                     </div>
@@ -1213,7 +1300,7 @@
                     <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
                         <span class="text-sm text-slate-800"><strong>Todos los módulos:</strong> caja menor, materiales, equipos, bitácora y visitas.</span></div>
                     <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
-                        <span class="text-sm text-slate-800"><strong>Captura por Telegram:</strong> su personal de campo reporta en 60 segundos.</span></div>
+                        <span class="text-sm text-slate-800"><strong>Captura por Telegram:</strong> su personal de campo reporta desde el celular al cerrar la jornada.</span></div>
                     <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
                         <span class="text-sm text-slate-800"><strong>Dashboard web 24/7:</strong> desde el celular o el computador.</span></div>
                     <div class="flex items-start gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i>
@@ -1461,7 +1548,7 @@
         // en uso. Antes el modelo la ignoraba, y por eso una obra larga mostraba
         // la misma fuga que una corta mientras el costo de SICO si crecia: el
         // neto conservador se volvia negativo pasados 14 meses.
-        // Calibracion: en la obra de la IPS esa perdida medida ronda el 1,8% del
+        // Calibracion: en la obra propia medida, esa perdida ronda el 1,8% del
         // presupuesto al mes (sobrecosto de administracion mas formaleta
         // inmovilizada). Aqui se usa una fraccion de eso para no inflar el caso.
         const FUGA_TIEMPO_MIN_MES = 0.0025;
